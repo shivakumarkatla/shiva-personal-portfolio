@@ -38,3 +38,12 @@ npm run build
 - Updated positioning to accurately describe Shiva as a Data Science graduate pursuing software development roles.
 - Changed “Problem Solving” to “Structured Problem Solving”.
 - Reduced excessive vertical whitespace inside the capability cards.
+
+
+### Build 04 — Skills
+
+- Development
+- Data & Analytics
+- AI & Automation
+- Tools
+- Currently Developing: TypeScript, Advanced React, Backend Architecture, System Design, AI Application Development, Docker

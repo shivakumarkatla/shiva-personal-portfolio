@@ -1,0 +1,10 @@
+EMAIL SETUP
+
+Open: src/components/sections/Contact.jsx
+
+Replace:
+  const CONTACT_EMAIL = "YOUR_EMAIL_HERE";
+
+with your actual portfolio email address.
+
+The CTA will then open the visitor's default email client using mailto:.
