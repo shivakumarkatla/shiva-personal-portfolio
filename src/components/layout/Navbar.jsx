@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 
+
 const navItems = [
-  { label: "About", href: "/#about" },
+  { label: "About", href: "/about", page: true },
   { label: "Skills", href: "/#skills" },
-  { label: "Projects", href: "/projects" },
+  { label: "Projects", href: "/projects", page: true },
   { label: "Journey", href: "/#journey" },
   { label: "Contact", href: "/#contact" },
 ];
@@ -16,17 +17,32 @@ function Navbar() {
           SHIVA<span>.</span>
         </Link>
 
-        <nav className="nav" aria-label="Primary navigation">
-          {navItems.map((item) => (
-            <a key={item.label} href={item.href}>
-              {item.label}
-            </a>
-          ))}
-        </nav>
+        
+<nav className="nav" aria-label="Primary navigation">
+  {navItems.map((item) =>
+    item.page ? (
+      <Link key={item.label} to={item.href}>
+        {item.label}
+      </Link>
+    ) : (
+      <a key={item.label} href={item.href}>
+        {item.label}
+      </a>
+    )
+  )}
+</nav>
 
-        <a className="button button--small" href="/#contact">
-          Let&apos;s Talk
-        </a>
+
+ 
+<a
+  className="button button--small"
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=katlashivakumar2003@gmail.com"
+  target="_blank"
+  rel="noreferrer"
+>
+  Let&apos;s Talk
+</a>
+
       </div>
     </header>
   );

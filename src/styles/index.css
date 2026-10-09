@@ -176,6 +176,61 @@ a {
     background 180ms ease;
 }
 
+/* Reusable navigation for dedicated pages */
+.page-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.page-navigation a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 180ms ease;
+}
+
+.page-navigation a:hover {
+  color: var(--color-accent);
+}
+
+.inner-page {
+  min-height: 55vh;
+  padding: 72px 0 100px;
+}
+
+.inner-page h1 {
+  margin: 24px 0;
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.inner-page h1 em {
+  color: var(--color-muted);
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+.inner-page > p {
+  max-width: 680px;
+  color: var(--color-muted);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 760px) {
+  .inner-page {
+    padding: 52px 0 72px;
+  }
+}
+
 .button:hover {
   background: var(--color-accent-hover);
   transform: translateY(-2px);
@@ -1231,4 +1286,162 @@ a {
   .journey-grid { grid-template-columns: 1fr; }
   .journey-card { min-height: 0; }
   .journey-card h3 { margin-top: 28px; }
+}
+
+
+/* About page */
+.about-page {
+  padding-bottom: 24px;
+}
+
+.about-page__hero {
+  padding: 64px 0 76px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-page__hero h1 {
+  max-width: 1000px;
+  margin: 28px 0 24px;
+  font-size: clamp(3.2rem, 7vw, 6.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+}
+
+.about-page__hero h1 em,
+.about-page__section h2 em {
+  color: var(--color-muted);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: normal;
+}
+
+.about-page__intro {
+  max-width: 700px;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.about-page__section {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 40px;
+  padding: 64px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-page__section-content h2 {
+  margin: 0 0 20px;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+}
+
+.about-page__section-content > p {
+  max-width: 720px;
+  margin: 0 0 24px;
+  color: var(--color-muted);
+  line-height: 1.8;
+}
+
+.about-page__journey {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 36px;
+  border-top: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+}
+
+.about-page__journey-item {
+  padding: 24px 20px;
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-page__journey-item > span,
+.about-page__principle > span {
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.about-page__journey-item h3,
+.about-page__principle h3 {
+  margin: 30px 0 12px;
+  font-size: 1.05rem;
+  letter-spacing: -0.025em;
+}
+
+.about-page__journey-item p,
+.about-page__principle p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.about-page__principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.about-page__principle {
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.about-page__principle h3 {
+  margin-top: 28px;
+}
+
+.about-page__direction {
+  padding-bottom: 80px;
+  border-bottom: 0;
+}
+
+.about-page__direction .button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+@media (max-width: 900px) {
+  .about-page__section {
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .about-page__journey,
+  .about-page__principles {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-page__hero {
+    padding: 48px 0 56px;
+  }
+
+  .about-page__hero h1 {
+    font-size: clamp(2.7rem, 12vw, 4.5rem);
+  }
+
+  .about-page__section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 48px 0;
+  }
+
+  .about-page__journey-item {
+    padding: 22px;
+  }
+
+  .about-page__principle {
+    padding: 22px;
+  }
 }

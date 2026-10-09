@@ -3,7 +3,7 @@ EMAIL SETUP
 Open: src/components/sections/Contact.jsx
 
 Replace:
-  const CONTACT_EMAIL = "YOUR_EMAIL_HERE";
+  const CONTACT_EMAIL = "katlashivakumar2003@gmail.com";
 
 with your actual portfolio email address.
 
