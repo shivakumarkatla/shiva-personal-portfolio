@@ -1445,3 +1445,52 @@ a {
     padding: 22px;
   }
 }
+
+/* Skills tags — ensure readable spacing and borders */
+.skills-page__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.skills-page__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 15px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+
+
+/* Homepage capabilities section */
+.skill-group__description {
+  margin: 12px 0 0;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.skills-section__action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.skills-section__action .button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .skills-section__action {
+    justify-content: flex-start;
+  }
+}

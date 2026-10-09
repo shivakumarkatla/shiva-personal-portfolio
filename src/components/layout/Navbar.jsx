@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const navItems = [
   { label: "About", href: "/about", page: true },
-  { label: "Skills", href: "/#skills" },
+  { label: "Skills", href: "/skills", page: true },
   { label: "Projects", href: "/projects", page: true },
   { label: "Journey", href: "/#journey" },
   { label: "Contact", href: "/#contact" },
