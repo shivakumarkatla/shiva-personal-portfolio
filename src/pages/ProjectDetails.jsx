@@ -116,9 +116,12 @@ function ProjectDetails() {
     );
   }
 
-  const isExpenseTracker =
-    project.slug === "full-stack-expense-tracker";
-  const caseStudy = isExpenseTracker ? expenseTrackerCaseStudy : null;
+const caseStudyBySlug = {
+  "full-stack-expense-tracker": expenseTrackerCaseStudy,
+  "full-stack-task-manager": taskManagerCaseStudy,
+};
+
+const caseStudy = caseStudyBySlug[project.slug] ?? null;
 
   return (
     <div className="site-shell">
@@ -249,5 +252,85 @@ function ProjectDetails() {
     </div>
   );
 }
+
+
+const taskManagerCaseStudy = {
+  introduction:
+    "A full-stack task management application for organizing tasks, updating their status, and managing work through a connected frontend and backend.",
+
+  problem: [
+    "Tasks need a clear lifecycle from creation to completion.",
+    "Users need to update and remove tasks without manually managing stored records.",
+    "Invalid input and failed operations need to be handled without leaving the interface in an unclear state.",
+  ],
+
+  solution:
+    "I built a task management application with registration and login, task creation and editing, deletion, status management, and a connected interface for working with tasks.",
+
+  features: [
+    {
+      title: "Authentication",
+      description:
+        "Registration and login provide access to the task management application.",
+    },
+    {
+      title: "Task management",
+      description:
+        "Create, view, update, and delete tasks through the application.",
+    },
+    {
+      title: "Status and completion",
+      description:
+        "Manage task status and mark tasks as completed as work progresses.",
+    },
+    {
+      title: "Connected frontend",
+      description:
+        "The task management interface connects to the backend to perform task operations.",
+    },
+    {
+      title: "Input validation",
+      description:
+        "Validate task input to help prevent invalid data from being submitted.",
+    },
+    {
+      title: "Error handling",
+      description:
+        "Handle invalid input and operation errors so failures can be communicated instead of silently ignored.",
+    },
+  ],
+
+  implementation: [
+    {
+      title: "Frontend",
+      description:
+        "The frontend provides the task list and task management interface, allowing users to interact with tasks through the application.",
+    },
+    {
+      title: "Backend API",
+      description:
+        "The backend handles authentication and task-related requests, keeping application operations separate from the user interface.",
+    },
+    {
+      title: "Task lifecycle",
+      description:
+        "Task creation, retrieval, updates, deletion, and completion status are supported by the application.",
+    },
+    {
+      title: "Validation and errors",
+      description:
+        "Input validation and error handling help the application respond to invalid data and unsuccessful operations.",
+    },
+  ],
+
+  learnings: [
+    "Building a full-stack application requires coordinating frontend actions with backend API behavior.",
+    "Task status needs to remain consistent between the user interface and stored data.",
+    "Validation should prevent invalid input from reaching the normal task workflow.",
+    "Error handling is part of the user experience, not just a backend concern.",
+    "Separating interface logic from API operations makes the application easier to reason about and maintain.",
+  ],
+};
+
 
 export default ProjectDetails;
