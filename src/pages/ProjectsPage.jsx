@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import { projects } from "../data/projects";
+import PageNavigation from "../components/layout/PageNavigation";
 
 function ProjectCard({ project, index }) {
   return (
@@ -27,6 +28,9 @@ function ProjectsPage() {
     <div className="site-shell">
       <Navbar />
       <main className="projects-page">
+        <div className="container">
+    <PageNavigation backTo="/" backLabel="Back to Home" />
+  </div>
         <section className="projects-page__hero section"><div className="container"><span className="eyebrow">Selected work</span><h1 className="display-title">Projects I&apos;ve <span className="display-title__muted">built.</span></h1><p className="lead">A collection of practical work across software development, AI, automation, voice interfaces, and data.</p></div></section>
         <section className="projects-archive-section"><div className="container">
           <div className="projects-page__section-heading"><span>Featured work</span><span>{String(featured.length).padStart(2, "0")} projects</span></div>
