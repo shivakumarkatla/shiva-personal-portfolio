@@ -56,7 +56,7 @@ function Contact() {
             </a>
 
             <a
-              href="https://www.linkedin.com/in/shiva-kumar-katla/"
+              href="https://www.linkedin.com/in/shivakumarkatla/"
               target="_blank"
               rel="noreferrer"
             >

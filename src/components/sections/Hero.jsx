@@ -1,12 +1,26 @@
-import { ArrowDownRight, ArrowUpRight, Check, Github, Linkedin } from "lucide-react";
+
+import {
+  ArrowDownRight,
+  ArrowUpRight,
+  Check,
+  Github,
+  Linkedin,
+} from "lucide-react";
 import { motion } from "motion/react";
 import Button from "../ui/Button";
 
-const technologies = ["React", "JavaScript", "Python", "Node.js", "AI", "Automation"];
+const technologies = [
+  "React",
+  "JavaScript",
+  "Python",
+  "Node.js",
+  "AI",
+  "Automation",
+];
 
 function Hero() {
   return (
-    <section className="hero" aria-labelledby="hero-title">
+    <section className="hero" id="hero" aria-labelledby="hero-title">
       <div className="container hero__container">
         <div className="hero__content">
           <motion.div
@@ -16,8 +30,12 @@ function Hero() {
             transition={{ duration: 0.5 }}
           >
             <span className="status-dot" aria-hidden="true" />
-            <span className="eyebrow hero__eyebrow">Software Developer</span>
-            <span className="hero__availability">Open to opportunities</span>
+            <span className="eyebrow hero__eyebrow">
+              Software Developer
+            </span>
+            <span className="hero__availability">
+              Open to opportunities
+            </span>
           </motion.div>
 
           <motion.h1
@@ -52,6 +70,12 @@ function Hero() {
               View Projects
               <ArrowUpRight size={17} aria-hidden="true" />
             </Button>
+
+            <Button href="/about" variant="secondary">
+              About Me
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </Button>
+
             <Button href="#contact" variant="secondary">
               Let&apos;s Connect
             </Button>
@@ -63,14 +87,25 @@ function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.35 }}
           >
-            <a href="https://github.com/" target="_blank" rel="noreferrer">
+            <a
+              href="https://github.com/shivakumarkatla"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit my GitHub profile"
+            >
               <Github size={17} aria-hidden="true" />
               GitHub
             </a>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
-              <Linkedin size={17} aria-hidden="true" />
-              LinkedIn
-            </a>
+
+           <a
+  href="https://www.linkedin.com/in/shivakumarkatla/"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Visit my LinkedIn profile"
+>
+  <Linkedin size={17} aria-hidden="true" />
+  LinkedIn
+</a>
           </motion.div>
         </div>
 
