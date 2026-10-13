@@ -2,6 +2,12 @@ import { motion } from "motion/react";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import PageNavigation from "../components/layout/PageNavigation";
+import PageMetadata from "../components/seo/PageMetadata";
+
+<PageMetadata
+  title="About Me"
+  description="Learn about Shiva Kumar's background, development journey, technical interests, and approach to building software."
+/>
 
 const journey = [
   {

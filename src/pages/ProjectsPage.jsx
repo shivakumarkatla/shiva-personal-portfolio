@@ -5,6 +5,12 @@ import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import { projects } from "../data/projects";
 import PageNavigation from "../components/layout/PageNavigation";
+import PageMetadata from "../components/seo/PageMetadata";
+
+<PageMetadata
+  title="Projects"
+  description="Explore Shiva Kumar's software development projects, including full-stack applications, AI agents, and automation workflows."
+/>
 
 function ProjectCard({ project, index }) {
   return (

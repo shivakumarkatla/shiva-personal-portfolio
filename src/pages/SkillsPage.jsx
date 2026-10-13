@@ -3,6 +3,12 @@ import { motion } from "motion/react";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import PageNavigation from "../components/layout/PageNavigation";
+import PageMetadata from "../components/seo/PageMetadata";
+
+<PageMetadata
+  title="Technical Skills"
+  description="Explore Shiva Kumar's skills in React, JavaScript, Python, SQL, data analytics, AI, and workflow automation."
+/>
 
 const skillGroups = [
   {

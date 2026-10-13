@@ -5,6 +5,8 @@ import Footer from "../components/layout/Footer";
 import PageNavigation from "../components/layout/PageNavigation";
 import { projects } from "../data/projects";
 import ProjectScreenshotCarousel from "../components/ProjectScreenshotCarousel";
+import PageMetadata from "../components/seo/PageMetadata";
+
 
 const expenseTrackerCaseStudy = {
   introduction:
@@ -130,6 +132,10 @@ const expenseTrackerCaseStudy = {
 function ProjectDetails() {
   const { slug } = useParams();
   const project = projects.find((item) => item.slug === slug);
+  <PageMetadata
+  title={project.title}
+  description={project.description}
+/>
 
   if (!project) {
     return (
