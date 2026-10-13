@@ -8,14 +8,13 @@ import Journey from "../components/sections/Journey";
 import Contact from "../components/sections/Contact";
 import PageMetadata from "../components/seo/PageMetadata";
 
+function Home() {
+  return (
+    <div className="site-shell">
 <PageMetadata
   title="Software Developer"
   description="Shiva Kumar's portfolio featuring full-stack applications, AI-powered workflows, and automation projects."
 />
-
-function Home() {
-  return (
-    <div className="site-shell">
       <Navbar />
       <main>
         <Hero />

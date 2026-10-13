@@ -4,11 +4,6 @@ import Footer from "../components/layout/Footer";
 import PageNavigation from "../components/layout/PageNavigation";
 import PageMetadata from "../components/seo/PageMetadata";
 
-<PageMetadata
-  title="About Me"
-  description="Learn about Shiva Kumar's background, development journey, technical interests, and approach to building software."
-/>
-
 const journey = [
   {
     number: "01",
@@ -51,6 +46,10 @@ const principles = [
 function AboutPage() {
   return (
     <div className="site-shell">
+      <PageMetadata
+  title="About Me"
+  description="Learn about Shiva Kumar's background, development journey, technical interests, and approach to building software."
+/>
       <Navbar />
 
       <main className="container about-page">

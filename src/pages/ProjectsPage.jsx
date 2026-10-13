@@ -7,10 +7,6 @@ import { projects } from "../data/projects";
 import PageNavigation from "../components/layout/PageNavigation";
 import PageMetadata from "../components/seo/PageMetadata";
 
-<PageMetadata
-  title="Projects"
-  description="Explore Shiva Kumar's software development projects, including full-stack applications, AI agents, and automation workflows."
-/>
 
 function ProjectCard({ project, index }) {
   return (
@@ -32,6 +28,10 @@ function ProjectsPage() {
 
   return (
     <div className="site-shell">
+      <PageMetadata
+  title="Projects"
+  description="Explore Shiva Kumar's software development projects, including full-stack applications, AI agents, and automation workflows."
+/>
       <Navbar />
       <main className="projects-page">
         <div className="container">

@@ -132,14 +132,14 @@ const expenseTrackerCaseStudy = {
 function ProjectDetails() {
   const { slug } = useParams();
   const project = projects.find((item) => item.slug === slug);
-  <PageMetadata
-  title={project.title}
-  description={project.description}
-/>
 
   if (!project) {
     return (
       <div className="site-shell">
+        <PageMetadata
+  title={project.title}
+  description={project.description}
+/>
         <Navbar />
         <main className="section">
           <div className="container">
