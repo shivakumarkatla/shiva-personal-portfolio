@@ -68,7 +68,6 @@ export const projects = [
       "An AI-assisted audit workflow combining image analysis, automation, structured records, and human approval.",
     technologies: [
       "n8n",
-      "Make",
       "Gemini",
       "Google Sheets",
       "Telegram",
