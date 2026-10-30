@@ -1,5 +1,6 @@
 
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import PageNavigation from "../components/layout/PageNavigation";
@@ -182,9 +183,9 @@ function SkillsPage() {
             possible.
           </p>
 
-          <a className="button" href="/projects">
+          <Link className="button" to="/projects">
             Explore my projects <span aria-hidden="true">↗</span>
-          </a>
+          </Link>
         </section>
       </main>
 

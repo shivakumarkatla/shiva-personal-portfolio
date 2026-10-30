@@ -27,7 +27,7 @@ function Projects() {
         <motion.p initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.4 }} transition={{ duration: 0.55, delay: 0.08 }}>A few projects that best represent how I approach software, automation, and data.</motion.p>
       </div></div>
       <div className="projects-featured">{featured.map((project, index) => <ProjectCard key={project.title} project={project} index={index} />)}</div>
-      <div className="projects-section__action"><Link className="text-link projects-view-all" to="/projects">View all projects <ArrowUpRight size={17} /></Link><span>12 projects</span></div>
+      <div className="projects-section__action"><Link className="text-link projects-view-all" to="/projects">View all projects <ArrowUpRight size={17} /></Link><span>{projects.length} projects</span></div>
     </div></section>
   );
 }

@@ -8,6 +8,7 @@ import {
   BarChart3,
   Brain,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
@@ -63,7 +64,7 @@ const projects = [
     title: "Expense Tracker",
     description:
       "A personal finance application with authentication, expense management, transaction records, and spending visualizations.",
-    technologies: "React · Node.js · Express · MongoDB · Recharts",
+    technologies: "React · Tailwind CSS · Recharts · Node.js · Express · MongoDB",
     href: "/projects/full-stack-expense-tracker",
     icon: BarChart3,
   },
@@ -320,18 +321,18 @@ function AboutPage() {
                     {technologies}
                   </p>
 
-                  <a className="about-page__project-link" href={href}>
+                  <Link className="about-page__project-link" to={href}>
                     Explore project
                     <ArrowUpRight size={16} aria-hidden="true" />
-                  </a>
+                  </Link>
                 </motion.article>
               ))}
             </div>
 
-            <a className="about-page__all-projects" href="/projects">
+            <Link className="about-page__all-projects" to="/projects">
               Explore all projects
               <ArrowUpRight size={17} aria-hidden="true" />
-            </a>
+            </Link>
 
             <p className="about-page__additional-work">
               I've also worked on a restaurant reservation voice agent,

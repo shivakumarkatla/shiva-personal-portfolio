@@ -71,7 +71,7 @@ function Hero() {
               <ArrowUpRight size={17} aria-hidden="true" />
             </Button>
 
-            <Button href="/about" variant="secondary">
+            <Button to="/about" variant="secondary">
               About Me
               <ArrowUpRight size={17} aria-hidden="true" />
             </Button>

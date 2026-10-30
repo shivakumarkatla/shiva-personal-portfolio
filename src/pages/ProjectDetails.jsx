@@ -137,9 +137,9 @@ function ProjectDetails() {
     return (
       <div className="site-shell">
         <PageMetadata
-  title={project.title}
-  description={project.description}
-/>
+          title="Project Not Found"
+          description="The requested project could not be found."
+        />
         <Navbar />
         <main className="section">
           <div className="container">
@@ -179,6 +179,10 @@ const caseStudy = caseStudyBySlug[project.slug] ?? null;
 
   return (
     <div className="site-shell">
+      <PageMetadata
+        title={project.title}
+        description={project.description}
+      />
       <Navbar />
 
       <main className="project-detail-page">
@@ -268,13 +272,13 @@ const caseStudy = caseStudyBySlug[project.slug] ?? null;
 
               <section className="project-detail__section">
                 <span className="eyebrow">02 / The Solution</span>
-                <h2>From individual records to a connected application</h2>
+                <h2>How I approached it</h2>
                 <p>{caseStudy.solution}</p>
               </section>
 
               <section className="project-detail__section">
                 <span className="eyebrow">03 / Key Features</span>
-                <h2>What the application can do</h2>
+                <h2>What it can do</h2>
 
                 <div className="project-detail__feature-grid">
                   {caseStudy.features.map((feature) => (

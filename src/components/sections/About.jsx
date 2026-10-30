@@ -60,7 +60,7 @@ function About() {
             <div className="about__profile">
               <img
                 src="/images/profile-photo.png"
-                alt="Portrait of the developer"
+                alt="Portrait of Shiva Kumar"
                 loading="lazy"
               />
             </div>

@@ -10,6 +10,9 @@ export const projects = [
     "A full-stack expense management application with authentication, CRUD operations, filtering, search, pagination, and dashboard analytics.",
   technologies: [
     "React",
+    "Tailwind CSS",
+    "Recharts",
+    "Axios",
     "Node.js",
     "Express",
     "MongoDB",
