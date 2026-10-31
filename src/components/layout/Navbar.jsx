@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, Moon, Sun, X } from "lucide-react";
+import { emailComposeUrl } from "../../data/profile";
 
 const navItems = [
   { label: "About", section: "about", page: "/about" },
@@ -240,7 +241,7 @@ function Navbar() {
 
         <a
           className="button button--small navbar-cta"
-          href="https://mail.google.com/mail/?view=cm&fs=1&to=katlashivakumar2003@gmail.com"
+          href={emailComposeUrl}
           target="_blank"
           rel="noreferrer"
         >

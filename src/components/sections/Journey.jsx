@@ -1,11 +1,5 @@
 import { motion } from "motion/react";
-
-const stages = [
-  { number: "01", title: "Data Science", text: "Built a foundation in programming, data, SQL, and analytical thinking." },
-  { number: "02", title: "Web Development", text: "Moved from frontend work into APIs, databases, authentication, and full-stack applications." },
-  { number: "03", title: "AI & Automation", text: "Started connecting AI, APIs, workflows, and real-world processes." },
-  { number: "04", title: "Current Direction", text: "Deepening software engineering while continuing to build with AI, automation, and data." },
-];
+import { journeyStages as stages } from "../../data/journey";
 
 function Journey() {
   return (

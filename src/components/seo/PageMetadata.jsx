@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 
-const SITE_URL = "https://shivas-personal-portfolio.netlify.app";
+import { profile } from "../../data/profile";
+
+const SITE_URL = profile.siteUrl;
 
 function setMetaTag(attribute, key, content) {
   let element = document.head.querySelector(

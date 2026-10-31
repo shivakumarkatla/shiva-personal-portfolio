@@ -1,5 +1,6 @@
+import { caseStudiesBySlug } from "./caseStudies";
 
-export const projects = [
+const projectSummaries = [
 {
   number: "01",
   title: "Full-Stack Expense Tracker",
@@ -230,3 +231,13 @@ liveDemoUrl: "",
     featured: false,
   },
 ];
+
+// Each project carries its case study (or null) so pages read one source.
+export const projects = projectSummaries.map((project) => ({
+  ...project,
+  caseStudy: caseStudiesBySlug[project.slug] ?? null,
+}));
+
+export function getProjectBySlug(slug) {
+  return projects.find((project) => project.slug === slug);
+}

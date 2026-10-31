@@ -9,35 +9,20 @@ import {
   Brain,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { emailComposeUrl } from "../data/profile";
+import { aboutJourney } from "../data/journey";
 
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import PageNavigation from "../components/layout/PageNavigation";
 import PageMetadata from "../components/seo/PageMetadata";
 
-const journey = [
-  {
-    number: "01",
-    title: "Data Science",
-    description:
-      "My academic foundation in programming, SQL, data analysis, and analytical thinking.",
-    icon: BarChart3,
-  },
-  {
-    number: "02",
-    title: "Software Development",
-    description:
-      "Practical experience building web applications, backend APIs, authentication flows, and database-driven systems.",
-    icon: Code2,
-  },
-  {
-    number: "03",
-    title: "AI & Automation",
-    description:
-      "Experience creating automated workflows, integrating AI services, and connecting tools to simplify repetitive tasks.",
-    icon: Workflow,
-  },
-];
+const journeyIcons = { data: BarChart3, software: Code2, automation: Workflow };
+
+const journey = aboutJourney.map((stage) => ({
+  ...stage,
+  icon: journeyIcons[stage.iconKey],
+}));
 
 const principles = [
   {
@@ -387,7 +372,7 @@ function AboutPage() {
 
             <a
               className="button"
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=katlashivakumar2003@gmail.com"
+              href={emailComposeUrl}
               target="_blank"
               rel="noreferrer"
             >

@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import Button from "../ui/Button";
+import { profile } from "../../data/profile";
 
 const technologies = [
   "React",
@@ -88,7 +89,7 @@ function Hero() {
             transition={{ duration: 0.5, delay: 0.35 }}
           >
             <a
-              href="https://github.com/shivakumarkatla"
+              href={profile.links.github}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit my GitHub profile"
@@ -98,7 +99,7 @@ function Hero() {
             </a>
 
            <a
-  href="https://www.linkedin.com/in/shivakumarkatla/"
+  href={profile.links.linkedin}
   target="_blank"
   rel="noopener noreferrer"
   aria-label="Visit my LinkedIn profile"

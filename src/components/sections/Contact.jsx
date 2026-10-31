@@ -2,9 +2,8 @@
 import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 import { motion } from "motion/react";
 
-const CONTACT_EMAIL = "katlashivakumar2003@gmail.com";
+import { emailComposeUrl, profile } from "../../data/profile";
 
-const EMAIL_URL = `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_EMAIL}`;
 
 function Contact() {
   return (
@@ -39,14 +38,14 @@ function Contact() {
           </div>
 
           <div className="contact-links">
-            <a href={EMAIL_URL} target="_blank" rel="noreferrer">
+            <a href={emailComposeUrl} target="_blank" rel="noreferrer">
               <Mail size={17} />
               <span>Email me</span>
               <ArrowUpRight size={16} />
             </a>
 
             <a
-              href="https://github.com/shivakumarkatla"
+              href={profile.links.github}
               target="_blank"
               rel="noreferrer"
             >
@@ -56,7 +55,7 @@ function Contact() {
             </a>
 
             <a
-              href="https://www.linkedin.com/in/shivakumarkatla/"
+              href={profile.links.linkedin}
               target="_blank"
               rel="noreferrer"
             >
