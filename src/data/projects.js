@@ -31,6 +31,10 @@ const projectSummaries = [
   ],
   liveDemoUrl:
     "https://expense-tracker-frontend-rho-lake.vercel.app",
+  cover: {
+    src: "/images/projects/expense-tracker/dashboard.png",
+    alt: "Expense Tracker dashboard showing spending totals, a monthly spending trend chart and a breakdown by category",
+  },
   featured: true,
 },
 {
@@ -60,6 +64,10 @@ const projectSummaries = [
   ],
   liveDemoUrl:
     "https://task-manager-frontend-rouge-omega.vercel.app",
+  cover: {
+    src: "/images/projects/task-manager/dashboard-tasks.png",
+    alt: "Task Manager dashboard listing tasks with status filters, status badges and edit and delete actions",
+  },
   featured: true,
 },
   {
@@ -83,6 +91,11 @@ const projectSummaries = [
   },
 ],
 liveDemoUrl: "",
+    cover: {
+      src: "/images/projects/ngo-audit/field-audit-workflow.png",
+      variant: "cover",
+      alt: "n8n FieldAudit workflow: a Telegram trigger, a Switch that routes missing captions or photos to alerts, Gemini image analysis, JavaScript processing, a Google Sheets row append and Telegram notifications",
+    },
     featured: true,
   },
   {
@@ -95,7 +108,7 @@ liveDemoUrl: "",
       "An AI-assisted scheduling workflow connecting conversational input with calendar and productivity actions.",
     technologies: [
       "n8n",
-      "AI",
+      "OpenAI",
       "Telegram",
       "Google Calendar",
       "Gmail",
@@ -107,6 +120,11 @@ liveDemoUrl: "",
   },
 ],
 liveDemoUrl: "",
+    cover: {
+      src: "/images/projects/smart-schedule/smart-schedule-workflow.png",
+      variant: "cover",
+      alt: "n8n Smart Schedule workflow: a Telegram trigger feeding an AI Agent that uses an OpenAI chat model, simple memory, a Google Calendar create-event tool and a Gmail send tool, then replies in Telegram",
+    },
     featured: true,
   },
   {

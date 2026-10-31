@@ -3,16 +3,6 @@
 /* Homepage section navigation */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 100px;
-}
-
-#hero,
-#about,
-#skills,
-#projects,
-#journey,
-#contact {
-  scroll-margin-top: 100px;
 }
 
 /* Active navigation link on dedicated pages */

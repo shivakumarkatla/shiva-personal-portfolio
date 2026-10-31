@@ -70,3 +70,52 @@ export const learningSkills = [
   "AI Application Development",
   "Docker",
 ];
+
+// Homepage capability areas. Tools and proof projects are limited to what
+// existing projects demonstrate; `proof` holds project slugs.
+export const capabilityAreas = [
+  {
+    id: "full-stack",
+    iconKey: "code",
+    title: "Full-Stack Development",
+    description:
+      "Web applications with a React front end, a Node.js and Express API, and a database behind them.",
+    points: [
+      "Frontend application development",
+      "Backend development and REST APIs",
+      "Database integration and authentication",
+    ],
+    tools: ["React", "Tailwind CSS", "Node.js", "Express", "MongoDB", "JWT"],
+    proof: ["full-stack-expense-tracker", "full-stack-task-manager"],
+  },
+  {
+    id: "automation",
+    iconKey: "workflow",
+    title: "AI Agents & Workflow Automation",
+    description:
+      "Workflows and agents that connect messaging, AI models and everyday tools, with people approving what matters.",
+    points: [
+      "n8n and Make workflows",
+      "AI-powered agents with memory and tools",
+      "API integrations between apps",
+      "Human-in-the-loop approval steps",
+      "Business process automation",
+    ],
+    tools: ["n8n", "Make", "OpenAI", "Gemini", "Vapi", "Telegram", "Slack", "Airtable"],
+    proof: ["smart-schedule", "ngo-audit-verification", "airtable-make-slack"],
+  },
+  {
+    id: "data",
+    iconKey: "chart",
+    title: "Data & Analytics",
+    description:
+      "Preparing and modelling data, then turning it into dashboards and reports people can use.",
+    points: [
+      "SQL and data handling",
+      "Excel and Power BI",
+      "Dashboards and reporting",
+    ],
+    tools: ["Python", "SQL", "MySQL", "Excel", "Power BI", "DAX"],
+    proof: ["power-bi-analytics-dashboard", "excel-lms"],
+  },
+];

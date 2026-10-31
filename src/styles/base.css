@@ -7,6 +7,8 @@
 }
 
 html {
+  /* In-page links land just below the 72px sticky header. */
+  scroll-padding-top: 72px;
   font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -1,28 +1,28 @@
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
-import Hero from "../components/sections/Hero";
-import About from "../components/sections/About";
-import Skills from "../components/sections/Skills";
-import Projects from "../components/sections/Projects";
-import Journey from "../components/sections/Journey";
-import Contact from "../components/sections/Contact";
+import HomeHero from "../components/home/HomeHero";
+import FeaturedWork from "../components/home/FeaturedWork";
+import Capabilities from "../components/home/Capabilities";
+import Automation from "../components/home/Automation";
+import Process from "../components/home/Process";
+import ContactSection from "../components/home/ContactSection";
 import PageMetadata from "../components/seo/PageMetadata";
 
 function Home() {
   return (
     <div className="site-shell">
-<PageMetadata
-  title="Software Developer"
-  description="Shiva Kumar's portfolio featuring full-stack applications, AI-powered workflows, and automation projects."
-/>
+      <PageMetadata
+        title="Software Developer"
+        description="Shiva Kumar builds full-stack applications, AI agents and workflow automations. Open to software development roles and freelance AI automation projects."
+      />
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-        <Hero />
-        <About />
-      <Skills />
-      <Projects />
-      <Journey />
-      <Contact />
+        <HomeHero />
+        <FeaturedWork />
+        <Capabilities />
+        <Automation />
+        <Process />
+        <ContactSection />
       </main>
       <Footer />
     </div>
