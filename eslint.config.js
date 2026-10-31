@@ -8,6 +8,16 @@ export default [
 
   js.configs.recommended,
 
+  // Build-time scripts run in Node, not the browser.
+  {
+    files: ["scripts/**/*.mjs"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: globals.node,
+    },
+  },
+
   {
     files: ["**/*.{js,jsx}"],
 

@@ -1,0 +1,170 @@
+{
+  "/images/profile-photo.png": {
+    "width": 1086,
+    "height": 1448,
+    "avif": "/images/optimized/profile-photo-480.avif 480w, /images/optimized/profile-photo-960.avif 960w, /images/optimized/profile-photo-1086.avif 1086w",
+    "webp": "/images/optimized/profile-photo-480.webp 480w, /images/optimized/profile-photo-960.webp 960w, /images/optimized/profile-photo-1086.webp 1086w",
+    "fallback": "/images/profile-photo.png"
+  },
+  "/images/projects/expense-tracker/add-expense.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/expense-tracker/add-expense-480.avif 480w, /images/optimized/projects/expense-tracker/add-expense-960.avif 960w, /images/optimized/projects/expense-tracker/add-expense-1440.avif 1440w, /images/optimized/projects/expense-tracker/add-expense-1920.avif 1920w",
+    "webp": "/images/optimized/projects/expense-tracker/add-expense-480.webp 480w, /images/optimized/projects/expense-tracker/add-expense-960.webp 960w, /images/optimized/projects/expense-tracker/add-expense-1440.webp 1440w, /images/optimized/projects/expense-tracker/add-expense-1920.webp 1920w",
+    "fallback": "/images/projects/expense-tracker/add-expense.png"
+  },
+  "/images/projects/expense-tracker/dashboard.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/expense-tracker/dashboard-480.avif 480w, /images/optimized/projects/expense-tracker/dashboard-960.avif 960w, /images/optimized/projects/expense-tracker/dashboard-1440.avif 1440w, /images/optimized/projects/expense-tracker/dashboard-1920.avif 1920w",
+    "webp": "/images/optimized/projects/expense-tracker/dashboard-480.webp 480w, /images/optimized/projects/expense-tracker/dashboard-960.webp 960w, /images/optimized/projects/expense-tracker/dashboard-1440.webp 1440w, /images/optimized/projects/expense-tracker/dashboard-1920.webp 1920w",
+    "fallback": "/images/projects/expense-tracker/dashboard.png"
+  },
+  "/images/projects/expense-tracker/login.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/expense-tracker/login-480.avif 480w, /images/optimized/projects/expense-tracker/login-960.avif 960w, /images/optimized/projects/expense-tracker/login-1440.avif 1440w, /images/optimized/projects/expense-tracker/login-1920.avif 1920w",
+    "webp": "/images/optimized/projects/expense-tracker/login-480.webp 480w, /images/optimized/projects/expense-tracker/login-960.webp 960w, /images/optimized/projects/expense-tracker/login-1440.webp 1440w, /images/optimized/projects/expense-tracker/login-1920.webp 1920w",
+    "fallback": "/images/projects/expense-tracker/login.png"
+  },
+  "/images/projects/expense-tracker/register.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/expense-tracker/register-480.avif 480w, /images/optimized/projects/expense-tracker/register-960.avif 960w, /images/optimized/projects/expense-tracker/register-1440.avif 1440w, /images/optimized/projects/expense-tracker/register-1920.avif 1920w",
+    "webp": "/images/optimized/projects/expense-tracker/register-480.webp 480w, /images/optimized/projects/expense-tracker/register-960.webp 960w, /images/optimized/projects/expense-tracker/register-1440.webp 1440w, /images/optimized/projects/expense-tracker/register-1920.webp 1920w",
+    "fallback": "/images/projects/expense-tracker/register.png"
+  },
+  "/images/projects/expense-tracker/transactions.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/expense-tracker/transactions-480.avif 480w, /images/optimized/projects/expense-tracker/transactions-960.avif 960w, /images/optimized/projects/expense-tracker/transactions-1440.avif 1440w, /images/optimized/projects/expense-tracker/transactions-1920.avif 1920w",
+    "webp": "/images/optimized/projects/expense-tracker/transactions-480.webp 480w, /images/optimized/projects/expense-tracker/transactions-960.webp 960w, /images/optimized/projects/expense-tracker/transactions-1440.webp 1440w, /images/optimized/projects/expense-tracker/transactions-1920.webp 1920w",
+    "fallback": "/images/projects/expense-tracker/transactions.png"
+  },
+  "/images/projects/ngo-audit/approval-and-disbursement.png.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/ngo-audit/approval-and-disbursement-480.avif 480w, /images/optimized/projects/ngo-audit/approval-and-disbursement-960.avif 960w, /images/optimized/projects/ngo-audit/approval-and-disbursement-1440.avif 1440w, /images/optimized/projects/ngo-audit/approval-and-disbursement-1920.avif 1920w",
+    "webp": "/images/optimized/projects/ngo-audit/approval-and-disbursement-480.webp 480w, /images/optimized/projects/ngo-audit/approval-and-disbursement-960.webp 960w, /images/optimized/projects/ngo-audit/approval-and-disbursement-1440.webp 1440w, /images/optimized/projects/ngo-audit/approval-and-disbursement-1920.webp 1920w",
+    "fallback": "/images/projects/ngo-audit/approval-and-disbursement.png.png"
+  },
+  "/images/projects/ngo-audit/field-audit-workflow.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/ngo-audit/field-audit-workflow-480.avif 480w, /images/optimized/projects/ngo-audit/field-audit-workflow-960.avif 960w, /images/optimized/projects/ngo-audit/field-audit-workflow-1440.avif 1440w, /images/optimized/projects/ngo-audit/field-audit-workflow-1920.avif 1920w",
+    "webp": "/images/optimized/projects/ngo-audit/field-audit-workflow-480.webp 480w, /images/optimized/projects/ngo-audit/field-audit-workflow-960.webp 960w, /images/optimized/projects/ngo-audit/field-audit-workflow-1440.webp 1440w, /images/optimized/projects/ngo-audit/field-audit-workflow-1920.webp 1920w",
+    "fallback": "/images/projects/ngo-audit/field-audit-workflow.png"
+  },
+  "/images/projects/ngo-audit/field-audit-workflow.png#cover": {
+    "width": 1792,
+    "height": 1008,
+    "avif": "/images/optimized/projects/ngo-audit/field-audit-workflow-cover-480.avif 480w, /images/optimized/projects/ngo-audit/field-audit-workflow-cover-960.avif 960w, /images/optimized/projects/ngo-audit/field-audit-workflow-cover-1440.avif 1440w, /images/optimized/projects/ngo-audit/field-audit-workflow-cover-1792.avif 1792w",
+    "webp": "/images/optimized/projects/ngo-audit/field-audit-workflow-cover-480.webp 480w, /images/optimized/projects/ngo-audit/field-audit-workflow-cover-960.webp 960w, /images/optimized/projects/ngo-audit/field-audit-workflow-cover-1440.webp 1440w, /images/optimized/projects/ngo-audit/field-audit-workflow-cover-1792.webp 1792w",
+    "fallback": "/images/optimized/projects/ngo-audit/field-audit-workflow-cover-1792.webp"
+  },
+  "/images/projects/ngo-audit/field-submission.png.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/ngo-audit/field-submission-480.avif 480w, /images/optimized/projects/ngo-audit/field-submission-960.avif 960w, /images/optimized/projects/ngo-audit/field-submission-1440.avif 1440w, /images/optimized/projects/ngo-audit/field-submission-1920.avif 1920w",
+    "webp": "/images/optimized/projects/ngo-audit/field-submission-480.webp 480w, /images/optimized/projects/ngo-audit/field-submission-960.webp 960w, /images/optimized/projects/ngo-audit/field-submission-1440.webp 1440w, /images/optimized/projects/ngo-audit/field-submission-1920.webp 1920w",
+    "fallback": "/images/projects/ngo-audit/field-submission.png.png"
+  },
+  "/images/projects/ngo-audit/grant-office-workflow.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/ngo-audit/grant-office-workflow-480.avif 480w, /images/optimized/projects/ngo-audit/grant-office-workflow-960.avif 960w, /images/optimized/projects/ngo-audit/grant-office-workflow-1440.avif 1440w, /images/optimized/projects/ngo-audit/grant-office-workflow-1920.avif 1920w",
+    "webp": "/images/optimized/projects/ngo-audit/grant-office-workflow-480.webp 480w, /images/optimized/projects/ngo-audit/grant-office-workflow-960.webp 960w, /images/optimized/projects/ngo-audit/grant-office-workflow-1440.webp 1440w, /images/optimized/projects/ngo-audit/grant-office-workflow-1920.webp 1920w",
+    "fallback": "/images/projects/ngo-audit/grant-office-workflow.png"
+  },
+  "/images/projects/ngo-audit/validation.png.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/ngo-audit/validation-480.avif 480w, /images/optimized/projects/ngo-audit/validation-960.avif 960w, /images/optimized/projects/ngo-audit/validation-1440.avif 1440w, /images/optimized/projects/ngo-audit/validation-1920.avif 1920w",
+    "webp": "/images/optimized/projects/ngo-audit/validation-480.webp 480w, /images/optimized/projects/ngo-audit/validation-960.webp 960w, /images/optimized/projects/ngo-audit/validation-1440.webp 1440w, /images/optimized/projects/ngo-audit/validation-1920.webp 1920w",
+    "fallback": "/images/projects/ngo-audit/validation.png.png"
+  },
+  "/images/projects/smart-schedule/calendar-event.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/smart-schedule/calendar-event-480.avif 480w, /images/optimized/projects/smart-schedule/calendar-event-960.avif 960w, /images/optimized/projects/smart-schedule/calendar-event-1440.avif 1440w, /images/optimized/projects/smart-schedule/calendar-event-1920.avif 1920w",
+    "webp": "/images/optimized/projects/smart-schedule/calendar-event-480.webp 480w, /images/optimized/projects/smart-schedule/calendar-event-960.webp 960w, /images/optimized/projects/smart-schedule/calendar-event-1440.webp 1440w, /images/optimized/projects/smart-schedule/calendar-event-1920.webp 1920w",
+    "fallback": "/images/projects/smart-schedule/calendar-event.png"
+  },
+  "/images/projects/smart-schedule/email-confirmation.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/smart-schedule/email-confirmation-480.avif 480w, /images/optimized/projects/smart-schedule/email-confirmation-960.avif 960w, /images/optimized/projects/smart-schedule/email-confirmation-1440.avif 1440w, /images/optimized/projects/smart-schedule/email-confirmation-1920.avif 1920w",
+    "webp": "/images/optimized/projects/smart-schedule/email-confirmation-480.webp 480w, /images/optimized/projects/smart-schedule/email-confirmation-960.webp 960w, /images/optimized/projects/smart-schedule/email-confirmation-1440.webp 1440w, /images/optimized/projects/smart-schedule/email-confirmation-1920.webp 1920w",
+    "fallback": "/images/projects/smart-schedule/email-confirmation.png"
+  },
+  "/images/projects/smart-schedule/smart-schedule-workflow.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/smart-schedule/smart-schedule-workflow-480.avif 480w, /images/optimized/projects/smart-schedule/smart-schedule-workflow-960.avif 960w, /images/optimized/projects/smart-schedule/smart-schedule-workflow-1440.avif 1440w, /images/optimized/projects/smart-schedule/smart-schedule-workflow-1920.avif 1920w",
+    "webp": "/images/optimized/projects/smart-schedule/smart-schedule-workflow-480.webp 480w, /images/optimized/projects/smart-schedule/smart-schedule-workflow-960.webp 960w, /images/optimized/projects/smart-schedule/smart-schedule-workflow-1440.webp 1440w, /images/optimized/projects/smart-schedule/smart-schedule-workflow-1920.webp 1920w",
+    "fallback": "/images/projects/smart-schedule/smart-schedule-workflow.png"
+  },
+  "/images/projects/smart-schedule/smart-schedule-workflow.png#cover": {
+    "width": 1792,
+    "height": 1008,
+    "avif": "/images/optimized/projects/smart-schedule/smart-schedule-workflow-cover-480.avif 480w, /images/optimized/projects/smart-schedule/smart-schedule-workflow-cover-960.avif 960w, /images/optimized/projects/smart-schedule/smart-schedule-workflow-cover-1440.avif 1440w, /images/optimized/projects/smart-schedule/smart-schedule-workflow-cover-1792.avif 1792w",
+    "webp": "/images/optimized/projects/smart-schedule/smart-schedule-workflow-cover-480.webp 480w, /images/optimized/projects/smart-schedule/smart-schedule-workflow-cover-960.webp 960w, /images/optimized/projects/smart-schedule/smart-schedule-workflow-cover-1440.webp 1440w, /images/optimized/projects/smart-schedule/smart-schedule-workflow-cover-1792.webp 1792w",
+    "fallback": "/images/optimized/projects/smart-schedule/smart-schedule-workflow-cover-1792.webp"
+  },
+  "/images/projects/smart-schedule/telegram-confirmation.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/smart-schedule/telegram-confirmation-480.avif 480w, /images/optimized/projects/smart-schedule/telegram-confirmation-960.avif 960w, /images/optimized/projects/smart-schedule/telegram-confirmation-1440.avif 1440w, /images/optimized/projects/smart-schedule/telegram-confirmation-1920.avif 1920w",
+    "webp": "/images/optimized/projects/smart-schedule/telegram-confirmation-480.webp 480w, /images/optimized/projects/smart-schedule/telegram-confirmation-960.webp 960w, /images/optimized/projects/smart-schedule/telegram-confirmation-1440.webp 1440w, /images/optimized/projects/smart-schedule/telegram-confirmation-1920.webp 1920w",
+    "fallback": "/images/projects/smart-schedule/telegram-confirmation.png"
+  },
+  "/images/projects/smart-schedule/telegram-request.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/smart-schedule/telegram-request-480.avif 480w, /images/optimized/projects/smart-schedule/telegram-request-960.avif 960w, /images/optimized/projects/smart-schedule/telegram-request-1440.avif 1440w, /images/optimized/projects/smart-schedule/telegram-request-1920.avif 1920w",
+    "webp": "/images/optimized/projects/smart-schedule/telegram-request-480.webp 480w, /images/optimized/projects/smart-schedule/telegram-request-960.webp 960w, /images/optimized/projects/smart-schedule/telegram-request-1440.webp 1440w, /images/optimized/projects/smart-schedule/telegram-request-1920.webp 1920w",
+    "fallback": "/images/projects/smart-schedule/telegram-request.png"
+  },
+  "/images/projects/task-manager/dashboard-empty.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/task-manager/dashboard-empty-480.avif 480w, /images/optimized/projects/task-manager/dashboard-empty-960.avif 960w, /images/optimized/projects/task-manager/dashboard-empty-1440.avif 1440w, /images/optimized/projects/task-manager/dashboard-empty-1920.avif 1920w",
+    "webp": "/images/optimized/projects/task-manager/dashboard-empty-480.webp 480w, /images/optimized/projects/task-manager/dashboard-empty-960.webp 960w, /images/optimized/projects/task-manager/dashboard-empty-1440.webp 1440w, /images/optimized/projects/task-manager/dashboard-empty-1920.webp 1920w",
+    "fallback": "/images/projects/task-manager/dashboard-empty.png"
+  },
+  "/images/projects/task-manager/dashboard-tasks.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/task-manager/dashboard-tasks-480.avif 480w, /images/optimized/projects/task-manager/dashboard-tasks-960.avif 960w, /images/optimized/projects/task-manager/dashboard-tasks-1440.avif 1440w, /images/optimized/projects/task-manager/dashboard-tasks-1920.avif 1920w",
+    "webp": "/images/optimized/projects/task-manager/dashboard-tasks-480.webp 480w, /images/optimized/projects/task-manager/dashboard-tasks-960.webp 960w, /images/optimized/projects/task-manager/dashboard-tasks-1440.webp 1440w, /images/optimized/projects/task-manager/dashboard-tasks-1920.webp 1920w",
+    "fallback": "/images/projects/task-manager/dashboard-tasks.png"
+  },
+  "/images/projects/task-manager/forgot-password.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/task-manager/forgot-password-480.avif 480w, /images/optimized/projects/task-manager/forgot-password-960.avif 960w, /images/optimized/projects/task-manager/forgot-password-1440.avif 1440w, /images/optimized/projects/task-manager/forgot-password-1920.avif 1920w",
+    "webp": "/images/optimized/projects/task-manager/forgot-password-480.webp 480w, /images/optimized/projects/task-manager/forgot-password-960.webp 960w, /images/optimized/projects/task-manager/forgot-password-1440.webp 1440w, /images/optimized/projects/task-manager/forgot-password-1920.webp 1920w",
+    "fallback": "/images/projects/task-manager/forgot-password.png"
+  },
+  "/images/projects/task-manager/login.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/task-manager/login-480.avif 480w, /images/optimized/projects/task-manager/login-960.avif 960w, /images/optimized/projects/task-manager/login-1440.avif 1440w, /images/optimized/projects/task-manager/login-1920.avif 1920w",
+    "webp": "/images/optimized/projects/task-manager/login-480.webp 480w, /images/optimized/projects/task-manager/login-960.webp 960w, /images/optimized/projects/task-manager/login-1440.webp 1440w, /images/optimized/projects/task-manager/login-1920.webp 1920w",
+    "fallback": "/images/projects/task-manager/login.png"
+  },
+  "/images/projects/task-manager/reset-password.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/task-manager/reset-password-480.avif 480w, /images/optimized/projects/task-manager/reset-password-960.avif 960w, /images/optimized/projects/task-manager/reset-password-1440.avif 1440w, /images/optimized/projects/task-manager/reset-password-1920.avif 1920w",
+    "webp": "/images/optimized/projects/task-manager/reset-password-480.webp 480w, /images/optimized/projects/task-manager/reset-password-960.webp 960w, /images/optimized/projects/task-manager/reset-password-1440.webp 1440w, /images/optimized/projects/task-manager/reset-password-1920.webp 1920w",
+    "fallback": "/images/projects/task-manager/reset-password.png"
+  },
+  "/images/projects/task-manager/signup.png": {
+    "width": 1920,
+    "height": 1080,
+    "avif": "/images/optimized/projects/task-manager/signup-480.avif 480w, /images/optimized/projects/task-manager/signup-960.avif 960w, /images/optimized/projects/task-manager/signup-1440.avif 1440w, /images/optimized/projects/task-manager/signup-1920.avif 1920w",
+    "webp": "/images/optimized/projects/task-manager/signup-480.webp 480w, /images/optimized/projects/task-manager/signup-960.webp 960w, /images/optimized/projects/task-manager/signup-1440.webp 1440w, /images/optimized/projects/task-manager/signup-1920.webp 1920w",
+    "fallback": "/images/projects/task-manager/signup.png"
+  }
+}
