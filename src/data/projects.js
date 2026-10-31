@@ -1,3 +1,4 @@
+import { architectureBySlug } from "./architecture";
 import { caseStudiesBySlug } from "./caseStudies";
 
 const projectSummaries = [
@@ -47,6 +48,8 @@ const projectSummaries = [
     "A full-stack task management application with protected user data, task CRUD, filtering, search, sorting, and pagination.",
   technologies: [
     "React",
+    "Tailwind CSS",
+    "Axios",
     "Node.js",
     "Express",
     "MongoDB",
@@ -100,7 +103,7 @@ liveDemoUrl: "",
   },
   {
     number: "04",
-    title: "Smart Schedule",
+    title: "Smart Schedule AI Agent",
     slug: "smart-schedule",
     status: "Completed",
     category: "AI & Automation",
@@ -212,6 +215,7 @@ liveDemoUrl: "",
     description:
       "A V1 automation for collecting and processing YouTube information as part of an automated workflow.",
     technologies: [
+      "Python",
       "Automation",
       "APIs",
       "Data",
@@ -250,11 +254,35 @@ liveDemoUrl: "",
   },
 ];
 
-// Each project carries its case study (or null) so pages read one source.
+// Each project carries its case study and architecture (or null) so pages read one source.
 export const projects = projectSummaries.map((project) => ({
   ...project,
   caseStudy: caseStudiesBySlug[project.slug] ?? null,
+  architecture: architectureBySlug[project.slug] ?? null,
 }));
+
+// Filter groups for the projects archive. Each project keeps its own category label.
+export const categoryGroups = [
+  {
+    id: "full-stack",
+    label: "Full-stack & Web",
+    categories: ["Full Stack", "Web Development"],
+  },
+  {
+    id: "automation",
+    label: "AI & Automation",
+    categories: ["AI & Automation", "Voice AI", "Automation", "AI & Learning"],
+  },
+  {
+    id: "data",
+    label: "Data & Analytics",
+    categories: ["Data & Analytics", "Data & Learning"],
+  },
+];
+
+export function getCategoryGroup(category) {
+  return categoryGroups.find((group) => group.categories.includes(category));
+}
 
 export function getProjectBySlug(slug) {
   return projects.find((project) => project.slug === slug);

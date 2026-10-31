@@ -10,16 +10,23 @@ const AUTOMATION_CATEGORIES = ["AI & Automation", "Automation", "Voice AI"];
  * Project summary card with a real screenshot, stack and links.
  * The whole card links to the case study; demo and repository links sit
  * above that link so they stay independently clickable.
+ * `variant="compact"` drops the screenshot for secondary listings.
  */
-function ProjectCard({ project, headingLevel: Heading = "h3", imageSizes }) {
+function ProjectCard({
+  project,
+  variant = "default",
+  headingLevel: Heading = "h3",
+  imageSizes,
+}) {
   const { slug, title, category, status, description, technologies, cover } =
     project;
   const isAutomation = AUTOMATION_CATEGORIES.includes(category);
   const repositories = project.githubUrls ?? [];
+  const isCompact = variant === "compact";
 
   return (
-    <article className="project-card-v2">
-      {cover && (
+    <article className={`project-card-v2 ${isCompact ? "project-card-v2--compact" : ""}`}>
+      {cover && !isCompact && (
         <div className="project-card-v2__media">
           <ResponsiveImage
             className="project-card-v2__image"

@@ -1,0 +1,53 @@
+.about-toolkit__grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.about-toolkit__card {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+}
+
+.about-toolkit__card h3 {
+  margin: 0;
+  font-size: var(--text-lg);
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+.about-toolkit__card ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-toolkit__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+}
+
+.about-toolkit__icon--signal {
+  border-color: color-mix(in srgb, var(--signal) 30%, transparent);
+  background: color-mix(in srgb, var(--signal) 12%, transparent);
+  color: var(--signal);
+}
+
+.about-toolkit__link {
+  margin-top: var(--space-5);
+}
+
+@media (min-width: 1024px) {
+  .about-toolkit__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

@@ -368,7 +368,7 @@ screenshots: [
 
 const smartScheduleCaseStudy = {
   introduction:
-    "An AI-powered scheduling assistant built with n8n that accepts conversational requests through Telegram, maintains context across messages, and integrates with Google Calendar and Gmail.",
+    "An AI agent built with n8n that accepts scheduling requests through Telegram, keeps context across messages, creates Google Calendar events and sends Gmail messages, then replies in Telegram.",
 
     
 screenshots: [
@@ -417,7 +417,7 @@ screenshots: [
   ],
 
   solution:
-    "I built an AI agent workflow in n8n that receives conversational requests through Telegram, uses conversational memory to maintain context, and selects available tools to handle scheduling tasks through Google Calendar and Gmail.",
+    "I built an AI agent workflow in n8n. A Telegram Trigger passes each message to an AI Agent that uses an OpenAI chat model and Simple Memory. The agent can call two tools, Google Calendar (create an event) and Gmail (send a message), and the workflow sends the result back to the user in Telegram.",
 
   features: [
     {
@@ -433,12 +433,12 @@ screenshots: [
     {
       title: "Google Calendar integration",
       description:
-        "The agent can use Google Calendar to create or modify calendar events.",
+        "The agent can create events in Google Calendar.",
     },
     {
       title: "Gmail integration",
       description:
-        "Gmail is connected as an available integration within the scheduling assistant workflow.",
+        "The agent can send email through Gmail, taking the recipient, subject and message from the request.",
     },
     {
       title: "AI request interpretation",
@@ -456,12 +456,12 @@ screenshots: [
     {
       title: "Workflow orchestration",
       description:
-        "n8n connects the conversational entry point, AI agent, memory, and external integrations into a coordinated workflow.",
+        "n8n connects the Telegram trigger, the AI Agent with its OpenAI chat model and memory, the Google Calendar and Gmail tools, and the Telegram reply into one workflow.",
     },
     {
       title: "Conversational interface",
       description:
-        "Telegram provides the interface for receiving user requests and continuing conversations.",
+        "A Telegram Trigger receives each request, and a Telegram node sends the result of the action back to the user.",
     },
     {
       title: "Context and memory",
@@ -471,12 +471,12 @@ screenshots: [
     {
       title: "Calendar operations",
       description:
-        "Google Calendar integration enables the agent to create or modify calendar events based on supported requests.",
+        "The Google Calendar tool lets the agent create calendar events from scheduling requests.",
     },
     {
       title: "Email integration",
       description:
-        "Gmail is connected as another available tool. The specific email actions are not described here because they have not been confirmed.",
+        "The Gmail tool lets the agent send a message. Its instructions tell it to extract the recipient, subject and message from the user's request.",
     },
     {
       title: "Agent tool selection",

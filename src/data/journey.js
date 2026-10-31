@@ -1,13 +1,8 @@
-// Learning and career journey, used on the homepage and About page.
+// Learning and career journey shown on the About page.
+// Combines the earlier homepage and About page versions; all text is from
+// those versions.
 
-export const journeyStages = [
-  { number: "01", title: "Data Science", text: "Built a foundation in programming, data, SQL, and analytical thinking." },
-  { number: "02", title: "Web Development", text: "Moved from frontend work into APIs, databases, authentication, and full-stack applications." },
-  { number: "03", title: "AI & Automation", text: "Started connecting AI, APIs, workflows, and real-world processes." },
-  { number: "04", title: "Current Direction", text: "Deepening software engineering while continuing to build with AI, automation, and data." },
-];
-
-export const aboutJourney = [
+export const journey = [
   {
     number: "01",
     title: "Data Science",
@@ -28,5 +23,12 @@ export const aboutJourney = [
     description:
       "Experience creating automated workflows, integrating AI services, and connecting tools to simplify repetitive tasks.",
     iconKey: "automation",
+  },
+  {
+    number: "04",
+    title: "Current Direction",
+    description:
+      "Deepening software engineering while continuing to build with AI, automation, and data.",
+    iconKey: "direction",
   },
 ];
