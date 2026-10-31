@@ -1,22 +1,7 @@
 /*
- * Stylesheet entry point. Order matters:
- * tokens -> fonts -> base -> legacy section styles (original order).
+ * Stylesheet entry point: design tokens, self-hosted fonts and base element
+ * styles. Component styles are co-located with their components.
  */
 @import "./tokens.css";
 @import "./fonts.css";
 @import "./base.css";
-
-/*
- * Legacy styles, split from the original single stylesheet.
- * Import order matches the original file order, so the cascade is unchanged.
- * These files are replaced section by section during the redesign.
- */
-@import "./legacy/01-foundation.css";
-@import "./legacy/02-hero.css";
-@import "./legacy/03-about-section.css";
-@import "./legacy/04-skills-section.css";
-@import "./legacy/05-projects.css";
-@import "./legacy/06-homepage-compact.css";
-@import "./legacy/07-about-skills-pages.css";
-@import "./legacy/08-project-detail.css";
-@import "./legacy/09-overrides-responsive.css";
