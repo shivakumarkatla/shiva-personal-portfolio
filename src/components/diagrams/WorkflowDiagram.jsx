@@ -70,7 +70,7 @@ function Node({ node, className = "", style }) {
   );
 }
 
-function WorkflowDiagram() {
+function WorkflowDiagram({ showCaseStudyLink = true }) {
   const prefersReducedMotion = useReducedMotion();
   const figureRef = useRef(null);
   const svgRef = useRef(null);
@@ -238,10 +238,12 @@ function WorkflowDiagram() {
           Illustrative diagram of my Smart Schedule workflow, based on its n8n
           export.
         </span>
-        <Link to="/projects/smart-schedule" className="workflow__caption-link">
-          View case study
-          <ArrowUpRight size={14} aria-hidden="true" />
-        </Link>
+        {showCaseStudyLink && (
+          <Link to="/projects/smart-schedule" className="workflow__caption-link">
+            View case study
+            <ArrowUpRight size={14} aria-hidden="true" />
+          </Link>
+        )}
       </figcaption>
     </figure>
   );

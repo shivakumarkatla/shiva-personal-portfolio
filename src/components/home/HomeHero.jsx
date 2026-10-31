@@ -3,7 +3,7 @@ import Button from "../ui/Button";
 import Container from "../ui/Container";
 import Reveal from "../ui/Reveal";
 import StatusPill from "../ui/StatusPill";
-import WorkflowDiagram from "./WorkflowDiagram";
+import WorkflowDiagram from "../diagrams/WorkflowDiagram";
 import { profile } from "../../data/profile";
 import "./HomeHero.css";
 

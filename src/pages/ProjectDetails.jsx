@@ -1,219 +1,230 @@
-import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight, CheckCircle2 , ExternalLink} from "lucide-react";
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
-import PageNavigation from "../components/layout/PageNavigation";
+import { useParams } from "react-router-dom";
+import { ArrowLeft, CircleCheck, CircleDot, ExternalLink, Github, Lightbulb } from "lucide-react";
+import ArchitectureFlow from "../components/case-study/ArchitectureFlow";
+import CaseStudySection from "../components/case-study/CaseStudySection";
+import ProjectFacts from "../components/case-study/ProjectFacts";
+import ProjectGallery from "../components/case-study/ProjectGallery";
+import ProjectPager from "../components/case-study/ProjectPager";
+import PageHero from "../components/layout/PageHero";
+import PageLayout from "../components/layout/PageLayout";
+import Button from "../components/ui/Button";
+import ContactCta from "../components/ui/ContactCta";
+import Container from "../components/ui/Container";
 import { getProjectBySlug } from "../data/projects";
-import ProjectScreenshotCarousel from "../components/ProjectScreenshotCarousel";
-import PageMetadata from "../components/seo/PageMetadata";
+import "./ProjectDetails.css";
 
+// Sections are only shown when the case study has content for them.
+function buildSections(project) {
+  const { caseStudy, architecture } = project;
+  if (!caseStudy) return [];
+
+  return [
+    caseStudy.screenshots?.length && {
+      id: "screenshots",
+      nav: "Screenshots",
+      eyebrow: "Screenshots",
+      title: "The project in use",
+      render: () => <ProjectGallery screenshots={caseStudy.screenshots} projectTitle={project.title} />,
+    },
+    caseStudy.problem?.length && {
+      id: "problem",
+      nav: "Problem",
+      eyebrow: "The problem",
+      title: "What needed to be solved",
+      render: () => (
+        <ul className="case-list">
+          {caseStudy.problem.map((item) => (
+            <li key={item}>
+              <CircleDot size={16} aria-hidden="true" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      ),
+    },
+    caseStudy.solution && {
+      id: "solution",
+      nav: "Solution",
+      eyebrow: "The solution",
+      title: "How I approached it",
+      render: () => <p>{caseStudy.solution}</p>,
+    },
+    architecture && {
+      id: "architecture",
+      nav: "Architecture",
+      eyebrow: "Architecture",
+      title: architecture.diagram || architecture.flows.some((flow) => flow.steps.some((step) => step.kind === "trigger"))
+        ? "How the workflow runs"
+        : "How the pieces connect",
+      render: () => <ArchitectureFlow architecture={architecture} />,
+    },
+    caseStudy.features?.length && {
+      id: "features",
+      nav: "Features",
+      eyebrow: "Implemented features",
+      title: "What it does",
+      render: () => (
+        <ul className="case-features">
+          {caseStudy.features.map((feature) => (
+            <li key={feature.title}>
+              <CircleCheck size={18} aria-hidden="true" />
+              <div>
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ),
+    },
+    caseStudy.implementation?.length && {
+      id: "implementation",
+      nav: "How it was built",
+      eyebrow: "Technical approach",
+      title: "How it was built",
+      render: () => (
+        <ol className="case-steps">
+          {caseStudy.implementation.map((item) => (
+            <li key={item.title}>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      ),
+    },
+    caseStudy.learnings?.length && {
+      id: "learnings",
+      nav: "Lessons",
+      eyebrow: "Lessons learned",
+      title: "What I learned building it",
+      render: () => (
+        <ul className="case-list case-list--learnings">
+          {caseStudy.learnings.map((item) => (
+            <li key={item}>
+              <Lightbulb size={16} aria-hidden="true" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      ),
+    },
+  ].filter(Boolean);
+}
+
+function ProjectNotFound() {
+  return (
+    <PageLayout title="Project Not Found" description="The requested project could not be found.">
+      <PageHero
+        breadcrumbs={[{ label: "Home", to: "/" }, { label: "Projects", to: "/projects" }, { label: "Not found" }]}
+        eyebrow="Project not found"
+        title="This project doesn't exist."
+        lead={<p>The project may have been moved or the URL may be incorrect.</p>}
+        actions={
+          <>
+            <Button to="/projects">
+              <ArrowLeft size={17} aria-hidden="true" />
+              Back to projects
+            </Button>
+            <Button to="/" variant="ghost">
+              Home
+            </Button>
+          </>
+        }
+      />
+    </PageLayout>
+  );
+}
 
 function ProjectDetails() {
   const { slug } = useParams();
   const project = getProjectBySlug(slug);
 
-  if (!project) {
-    return (
-      <div className="site-shell">
-        <PageMetadata
-          title="Project Not Found"
-          description="The requested project could not be found."
-        />
-        <Navbar />
-        <main id="main-content" tabIndex={-1} className="section">
-          <div className="container">
-            <span className="eyebrow">Project not found</span>
-            <h1 className="display-title">
-              This project doesn&apos;t exist.
-            </h1>
-            <p className="lead">
-              The project may have been moved or the URL may be incorrect.
-            </p>
-            <Link className="text-link" to="/projects">
-              <ArrowLeft size={16} /> Back to projects
-            </Link>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
+  if (!project) return <ProjectNotFound />;
 
-  const { caseStudy } = project;
+  const sections = buildSections(project);
+  const repositories = project.githubUrls ?? [];
+  const intro = project.caseStudy?.introduction ?? project.description;
 
   return (
-    <div className="site-shell">
-      <PageMetadata
+    <PageLayout title={project.title} description={project.description}>
+      <PageHero
+        breadcrumbs={[
+          { label: "Home", to: "/" },
+          { label: "Projects", to: "/projects" },
+          { label: project.title },
+        ]}
+        eyebrow={`Case study · ${project.category}`}
         title={project.title}
-        description={project.description}
-      />
-      <Navbar />
-
-      <main id="main-content" tabIndex={-1} className="project-detail-page">
-        <div className="container">
-          <PageNavigation
-            backTo="/projects"
-            backLabel="Back to Projects"
-          />
-
-          <section className="project-detail-hero">
-            <span className="eyebrow">
-              {project.category} / {project.status}
-            </span>
-
-            <h1 className="display-title">{project.title}</h1>
-
-            <p className="lead">
-              {caseStudy
-                ? caseStudy.introduction
-                : project.description}
-            </p>
-
-            <div className="project-detail__technologies">
-              {project.technologies.map((technology) => (
-                <span key={technology}>{technology}</span>
-              ))}
-            </div>
-
-            
-{(project.githubUrls?.length > 0 || project.liveDemoUrl) && (
-  
-<div className="project-detail__links">
-  {project.githubUrls?.map((repo) => (
-    <a
-      key={repo.url}
-      className="button button--secondary"
-      href={repo.url}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <span>GitHub</span>
-      <span>{repo.label}</span>
-      <ArrowUpRight size={15} aria-hidden="true" />
-    </a>
-  ))}
-
-  {project.liveDemoUrl && (
-    <a
-      className="button button--primary"
-      href={project.liveDemoUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <ExternalLink size={17} aria-hidden="true" />
-      <span>Live Demo</span>
-    </a>
-  )}
-</div>
-)}
-
-          </section>
-
-
-{caseStudy?.screenshots && (
-    <ProjectScreenshotCarousel
-      screenshots={caseStudy.screenshots}
-    />
-  )}
-
-          {caseStudy ? (
+        lead={<p>{intro}</p>}
+        actions={
+          (project.liveDemoUrl || repositories.length > 0) && (
             <>
-              <section className="project-detail__section">
-                <span className="eyebrow">01 / The Problem</span>
-                <h2>What needed to be solved?</h2>
-                <ul className="project-detail__list">
-                  {caseStudy.problem.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </section>
-
-              <section className="project-detail__section">
-                <span className="eyebrow">02 / The Solution</span>
-                <h2>How I approached it</h2>
-                <p>{caseStudy.solution}</p>
-              </section>
-
-              <section className="project-detail__section">
-                <span className="eyebrow">03 / Key Features</span>
-                <h2>What it can do</h2>
-
-                <div className="project-detail__feature-grid">
-                  {caseStudy.features.map((feature) => (
-                    <article
-                      className="project-detail__feature"
-                      key={feature.title}
-                    >
-                      <CheckCircle2
-                        size={18}
-                        aria-hidden="true"
-                      />
-                      <div>
-                        <h3>{feature.title}</h3>
-                        <p>{feature.description}</p>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </section>
-
-              <section className="project-detail__section">
-                <span className="eyebrow">04 / Technical Approach</span>
-                <h2>How it was built</h2>
-
-                <div className="project-detail__implementation">
-                  {caseStudy.implementation.map((item) => (
-                    <article
-                      className="project-detail__implementation-item"
-                      key={item.title}
-                    >
-                      <h3>{item.title}</h3>
-                      <p>{item.description}</p>
-                    </article>
-                  ))}
-                </div>
-              </section>
-
-              <section className="project-detail__section">
-                <span className="eyebrow">05 / Lessons Learned</span>
-                <h2>What I learned building it</h2>
-
-                <ul className="project-detail__list">
-                  {caseStudy.learnings.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </section>
+              {project.liveDemoUrl && (
+                <Button href={project.liveDemoUrl} external>
+                  <ExternalLink size={17} aria-hidden="true" />
+                  Live demo
+                  <span className="sr-only">(opens in a new tab)</span>
+                </Button>
+              )}
+              {repositories.map((repository, index) => (
+                <Button
+                  key={repository.url}
+                  href={repository.url}
+                  external
+                  variant={project.liveDemoUrl || index > 0 ? "ghost" : "primary"}
+                >
+                  <Github size={17} aria-hidden="true" />
+                  {repositories.length > 1 ? repository.label : "View on GitHub"}
+                  <span className="sr-only">(GitHub, opens in a new tab)</span>
+                </Button>
+              ))}
             </>
+          )
+        }
+        aside={<ProjectFacts project={project} />}
+      />
+
+      <Container className="case-layout">
+        {sections.length > 0 && (
+          <nav className="case-layout__toc" aria-label="On this page">
+            <p>On this page</p>
+            <ol>
+              {sections.map((section) => (
+                <li key={section.id}>
+                  <a href={`#${section.id}`}>{section.nav}</a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )}
+
+        <div className="case-layout__content">
+          {sections.length > 0 ? (
+            sections.map((section, index) => (
+              <CaseStudySection
+                key={section.id}
+                id={section.id}
+                number={index + 1}
+                eyebrow={section.eyebrow}
+                title={section.title}
+              >
+                {section.render()}
+              </CaseStudySection>
+            ))
           ) : (
-            <section className="project-detail__section">
-              <span className="eyebrow">Case study in progress</span>
-              <h2>More about this project</h2>
-              <p>
-                This page currently presents the project summary.
-                Its implementation details, key decisions, and
-                lessons learned will be documented after the
-                project-specific details are reviewed.
-              </p>
-            </section>
+            <p className="case-layout__empty">A detailed case study for this project hasn&apos;t been written yet.</p>
           )}
 
-          <div className="project-detail__back">
-            <Link className="text-link" to="/projects">
-              <ArrowLeft size={16} /> All projects
-            </Link>
-
-            <Link className="text-link" to="/">
-              Home <ArrowUpRight size={16} />
-            </Link>
-          </div>
+          <ProjectPager slug={project.slug} />
         </div>
-      </main>
+      </Container>
 
-      <Footer />
-    </div>
+      <ContactCta />
+    </PageLayout>
   );
 }
-
 
 export default ProjectDetails;

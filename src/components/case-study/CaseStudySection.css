@@ -1,0 +1,124 @@
+.case-section {
+  padding-block: var(--space-7);
+  border-top: 1px solid var(--border);
+}
+
+.case-section:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.case-section__eyebrow {
+  margin: 0 0 var(--space-3);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.case-section__title {
+  margin: 0 0 var(--space-5);
+  font-size: clamp(var(--text-xl), 3vw, var(--text-2xl));
+  font-weight: 650;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.case-section__body > p {
+  max-width: 70ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--text-md);
+}
+
+/* Problem and lessons lists */
+.case-list {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-list li {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: var(--space-3);
+  color: var(--muted);
+}
+
+.case-list svg {
+  margin-top: 3px;
+  color: var(--accent);
+}
+
+/* Implemented features */
+.case-features {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-features li {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-1);
+}
+
+.case-features svg {
+  margin-top: 2px;
+  color: var(--signal);
+}
+
+.case-features h3,
+.case-steps h3 {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-base);
+  font-weight: 650;
+}
+
+.case-features p,
+.case-steps p {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+/* How it was built: numbered steps */
+.case-steps {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: case-step;
+}
+
+.case-steps li {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: var(--space-3);
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--border);
+  counter-increment: case-step;
+}
+
+.case-steps li::before {
+  content: counter(case-step, decimal-leading-zero);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .case-features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
