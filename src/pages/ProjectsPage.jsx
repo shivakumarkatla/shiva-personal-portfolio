@@ -1,52 +1,122 @@
-import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
-import { motion } from "motion/react";
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
-import { projects } from "../data/projects";
-import PageNavigation from "../components/layout/PageNavigation";
-import PageMetadata from "../components/seo/PageMetadata";
+import { useSearchParams } from "react-router-dom";
+import FilterChips from "../components/projects/FilterChips";
+import ProjectCard from "../components/projects/ProjectCard";
+import PageHero from "../components/layout/PageHero";
+import PageLayout from "../components/layout/PageLayout";
+import Button from "../components/ui/Button";
+import ContactCta from "../components/ui/ContactCta";
+import Container from "../components/ui/Container";
+import { categoryGroups, getCategoryGroup, projects } from "../data/projects";
+import "./ProjectsPage.css";
 
-
-function ProjectCard({ project, index }) {
-  return (
-    <motion.article className="project-card project-card--archive" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.45, delay: index * 0.035 }}>
-      <Link to={`/projects/${project.slug}`} className="project-card__link">
-        <div className="project-card__top"><span>{project.number}</span><span>{project.status}</span></div>
-        <div className="project-card__body">
-          <div><span className="project-card__category">{project.category}</span><h3>{project.title}</h3><p>{project.description}</p></div>
-          <div className="project-card__footer"><div className="project-card__tags">{project.technologies.map((technology) => <span key={technology}>{technology}</span>)}</div><span className="project-card__arrow" aria-hidden="true"><ArrowUpRight size={18} /></span></div>
-        </div>
-      </Link>
-    </motion.article>
-  );
-}
+const ALL = "all";
 
 function ProjectsPage() {
-  const featured = projects.filter((project) => project.featured);
-  const moreWork = projects.filter((project) => !project.featured);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const requested = searchParams.get("category");
+  const activeGroup = categoryGroups.some((group) => group.id === requested) ? requested : ALL;
+
+  const matches = (project) =>
+    activeGroup === ALL || getCategoryGroup(project.category)?.id === activeGroup;
+  const visible = projects.filter(matches);
+  const featured = visible.filter((project) => project.featured);
+  const more = visible.filter((project) => !project.featured);
+
+  const filterOptions = [
+    { id: ALL, label: "All", count: projects.length },
+    ...categoryGroups.map((group) => ({
+      id: group.id,
+      label: group.label,
+      count: projects.filter((project) => getCategoryGroup(project.category)?.id === group.id).length,
+    })),
+  ];
+
+  function handleFilter(id) {
+    setSearchParams(id === ALL ? {} : { category: id }, { replace: true, preventScrollReset: true });
+  }
+
+  const activeLabel = filterOptions.find((option) => option.id === activeGroup).label;
 
   return (
-    <div className="site-shell">
-      <PageMetadata
-  title="Projects"
-  description="Explore Shiva Kumar's software development projects, including full-stack applications, AI agents, and automation workflows."
-/>
-      <Navbar />
-      <main id="main-content" tabIndex={-1} className="projects-page">
-        <div className="container">
-    <PageNavigation backTo="/" backLabel="Back to Home" />
-  </div>
-        <section className="projects-page__hero section"><div className="container"><span className="eyebrow">Selected work</span><h1 className="display-title">Projects I&apos;ve <span className="display-title__muted">built.</span></h1><p className="lead">A collection of practical work across software development, AI, automation, voice interfaces, and data.</p></div></section>
-        <section className="projects-archive-section"><div className="container">
-          <div className="projects-page__section-heading"><span>Featured work</span><span>{String(featured.length).padStart(2, "0")} projects</span></div>
-          <div className="projects-featured">{featured.map((project, index) => <ProjectCard key={project.title} project={project} index={index} />)}</div>
-          <div className="projects-page__section-heading projects-page__section-heading--more"><span>More work</span><span>{String(moreWork.length).padStart(2, "0")} projects</span></div>
-          <div className="projects-grid">{moreWork.map((project, index) => <ProjectCard key={project.title} project={project} index={index} />)}</div>
-        </div></section>
-      </main>
-      <Footer />
-    </div>
+    <PageLayout
+      title="Projects"
+      description="Full-stack applications, AI agents, workflow automations and data projects by Shiva Kumar, each with a case study and real screenshots or source links."
+    >
+      <PageHero
+        breadcrumbs={[{ label: "Home", to: "/" }, { label: "Projects" }]}
+        eyebrow="Projects"
+        title="Projects I've built."
+        lead={
+          <p>
+            A collection of practical work across software development, AI,
+            automation, voice interfaces, and data. Every project has a case
+            study; the first four also include screenshots and source code.
+          </p>
+        }
+      />
+
+      <section className="projects-archive" aria-labelledby="projects-archive-title">
+        <Container>
+          <div className="projects-archive__toolbar">
+            <h2 id="projects-archive-title" className="sr-only">
+              All projects
+            </h2>
+            <FilterChips
+              label="Filter projects by area"
+              options={filterOptions}
+              value={activeGroup}
+              onChange={handleFilter}
+            />
+            <p className="projects-archive__count" role="status" aria-live="polite">
+              Showing {visible.length} of {projects.length} projects
+              {activeGroup !== ALL && ` in ${activeLabel}`}
+            </p>
+          </div>
+
+          {featured.length > 0 && (
+            <div className="projects-archive__group">
+              <h3 className="projects-archive__heading">
+                Featured work <span>{featured.length}</span>
+              </h3>
+              <div className="projects-archive__featured">
+                {featured.map((project) => (
+                  <ProjectCard key={project.slug} project={project} headingLevel="h4" />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {more.length > 0 && (
+            <div className="projects-archive__group">
+              <h3 className="projects-archive__heading">
+                More projects <span>{more.length}</span>
+              </h3>
+              <div className="projects-archive__more">
+                {more.map((project) => (
+                  <ProjectCard
+                    key={project.slug}
+                    project={project}
+                    variant="compact"
+                    headingLevel="h4"
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {visible.length === 0 && (
+            <div className="projects-archive__empty">
+              <p>No projects in this area yet.</p>
+              <Button variant="ghost" onClick={() => handleFilter(ALL)}>
+                Show all projects
+              </Button>
+            </div>
+          )}
+        </Container>
+      </section>
+
+      <ContactCta />
+    </PageLayout>
   );
 }
 
