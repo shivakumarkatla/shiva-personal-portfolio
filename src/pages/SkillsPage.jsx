@@ -1,128 +1,75 @@
-
-import { motion } from "motion/react";
-import { Link } from "react-router-dom";
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
-import PageNavigation from "../components/layout/PageNavigation";
-import PageMetadata from "../components/seo/PageMetadata";
+import { ArrowRight } from "lucide-react";
+import PageHero from "../components/layout/PageHero";
+import PageLayout from "../components/layout/PageLayout";
+import SkillGroup from "../components/skills/SkillGroup";
+import Button from "../components/ui/Button";
+import ContactCta from "../components/ui/ContactCta";
+import Section from "../components/ui/Section";
+import SectionHeader from "../components/ui/SectionHeader";
+import Tag from "../components/ui/Tag";
 import { learningSkills, skillGroups } from "../data/skills";
-
-
+import "./SkillsPage.css";
 
 function SkillsPage() {
   return (
-    <div className="site-shell">
-      <PageMetadata
-  title="Technical Skills"
-  description="Explore Shiva Kumar's skills in React, JavaScript, Python, SQL, data analytics, AI, and workflow automation."
-/>
-      <Navbar />
-
-      <main id="main-content" tabIndex={-1} className="container skills-page">
-        <PageNavigation backTo="/" backLabel="Back to Home" />
-
-        <section className="skills-page__hero">
-          <div className="section-label">
-            <span>01</span>
-            <span>Skills & Technologies</span>
-          </div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            Tools for turning
-            <br />
-            ideas into <em>working software.</em>
-          </motion.h1>
-
-          <p>
-            An overview of the technologies I use across software
-            development, data analytics, and AI automation, along with
-            the skills I'm actively developing.
-          </p>
-        </section>
-
-        <section
-          className="skills-page__groups"
-          aria-label="Technical skill areas"
-        >
-          {skillGroups.map((group) => (
-            <article
-              className="skills-page__group"
-              key={group.number}
-            >
-              <div className="section-label">
-                <span>{group.number}</span>
-                <span>Skill Area</span>
-              </div>
-
-              <div className="skills-page__group-content">
-                <h2>{group.title}</h2>
-                <p>{group.description}</p>
-
-                <div className="skills-page__list">
-                  {group.skills.map((skill) => (
-                    <span
-                      className="skills-page__tag"
-                      key={skill}
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </article>
-          ))}
-        </section>
-
-        <section className="skills-page__learning">
-          <div className="section-label">
-            <span>05</span>
-            <span>Currently Developing</span>
-          </div>
-
-          <div className="skills-page__learning-content">
-            <h2>
-              Always learning.
-              <br />
-              <em>Always improving.</em>
-            </h2>
-
+    <PageLayout
+      title="Technical Skills"
+      description="Shiva Kumar's skills across frontend and backend development, AI and workflow automation, and data analytics, each linked to the projects that use it."
+    >
+      <PageHero
+        breadcrumbs={[{ label: "Home", to: "/" }, { label: "Skills" }]}
+        eyebrow="Skills & technologies"
+        title="Tools for turning ideas into working software."
+        lead={
+          <>
             <p>
-              I'm strengthening these areas through structured
-              learning and practical projects. They represent my
-              current learning priorities, not claims of mastery.
+              An overview of the technologies I use across software
+              development, data analytics, and AI automation, along with the
+              skills I&apos;m actively developing.
             </p>
+            <p>
+              Each skill used in a project on this site links to that project,
+              so you can see where and how I used it. I don&apos;t rate my own
+              proficiency with percentages.
+            </p>
+          </>
+        }
+        actions={
+          <Button to="/projects" variant="ghost">
+            Browse the projects
+            <ArrowRight size={17} aria-hidden="true" />
+          </Button>
+        }
+      />
 
-            <div className="skills-page__list">
-              {learningSkills.map((skill) => (
-                <span
-                  className="skills-page__tag skills-page__tag--learning"
-                  key={skill}
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
+      <Section className="skills-page-v2" aria-label="Skill categories">
+        <div className="skills-page-v2__groups">
+          {skillGroups.map((group, index) => (
+            <SkillGroup key={group.id} group={group} index={index} />
+          ))}
+        </div>
+      </Section>
 
-        <section className="skills-page__next">
-          <p>
-            Skills are best understood through the work they make
-            possible.
-          </p>
+      <Section id="learning" labelledBy="learning-title" tone="raised">
+        <div className="skills-page-v2__learning">
+          <SectionHeader
+            eyebrow="Currently developing"
+            title="Always learning. Always improving."
+            titleId="learning-title"
+            description="I'm strengthening these areas through structured learning and practical projects. They represent my current learning priorities, not claims of mastery."
+          />
+          <ul className="skills-page-v2__learning-list">
+            {learningSkills.map((skill) => (
+              <li key={skill}>
+                <Tag tone="accent">{skill}</Tag>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Section>
 
-          <Link className="button" to="/projects">
-            Explore my projects <span aria-hidden="true">↗</span>
-          </Link>
-        </section>
-      </main>
-
-      <Footer />
-    </div>
+      <ContactCta />
+    </PageLayout>
   );
 }
 
