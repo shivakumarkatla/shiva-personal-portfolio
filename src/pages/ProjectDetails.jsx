@@ -20,7 +20,7 @@ function ProjectDetails() {
           description="The requested project could not be found."
         />
         <Navbar />
-        <main className="section">
+        <main id="main-content" tabIndex={-1} className="section">
           <div className="container">
             <span className="eyebrow">Project not found</span>
             <h1 className="display-title">
@@ -49,7 +49,7 @@ function ProjectDetails() {
       />
       <Navbar />
 
-      <main className="project-detail-page">
+      <main id="main-content" tabIndex={-1} className="project-detail-page">
         <div className="container">
           <PageNavigation
             backTo="/projects"

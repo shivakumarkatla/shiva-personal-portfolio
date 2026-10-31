@@ -16,7 +16,7 @@ function Home() {
   description="Shiva Kumar's portfolio featuring full-stack applications, AI-powered workflows, and automation projects."
 />
       <Navbar />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <About />
       <Skills />

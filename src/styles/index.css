@@ -1,4 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap");
+/*
+ * Stylesheet entry point. Order matters:
+ * tokens -> fonts -> base -> legacy section styles (original order).
+ */
+@import "./tokens.css";
+@import "./fonts.css";
+@import "./base.css";
 
 /*
  * Legacy styles, split from the original single stylesheet.

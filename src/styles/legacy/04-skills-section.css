@@ -71,7 +71,7 @@
   transition: background 180ms ease;
 }
 
-.skill-group:hover { background: rgba(17, 17, 17, 0.025); }
+.skill-group:hover { background: color-mix(in srgb, var(--color-text) 3%, transparent); }
 
 .skill-group__top {
   display: flex;
@@ -117,7 +117,7 @@
   margin-top: 18px;
   padding: 30px;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   background: var(--color-surface);
 }
 

@@ -33,7 +33,7 @@ function ProjectsPage() {
   description="Explore Shiva Kumar's software development projects, including full-stack applications, AI agents, and automation workflows."
 />
       <Navbar />
-      <main className="projects-page">
+      <main id="main-content" tabIndex={-1} className="projects-page">
         <div className="container">
     <PageNavigation backTo="/" backLabel="Back to Home" />
   </div>

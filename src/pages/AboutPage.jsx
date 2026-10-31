@@ -95,7 +95,7 @@ function AboutPage() {
 
       <Navbar />
 
-      <main className="container about-page">
+      <main id="main-content" tabIndex={-1} className="container about-page">
         <PageNavigation backTo="/" backLabel="Back to Home" />
 
         {/* 01 — About Me */}

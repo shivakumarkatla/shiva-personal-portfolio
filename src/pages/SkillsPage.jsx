@@ -18,7 +18,7 @@ function SkillsPage() {
 />
       <Navbar />
 
-      <main className="container skills-page">
+      <main id="main-content" tabIndex={-1} className="container skills-page">
         <PageNavigation backTo="/" backLabel="Back to Home" />
 
         <section className="skills-page__hero">

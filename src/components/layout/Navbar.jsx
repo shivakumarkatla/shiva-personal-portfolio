@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { emailComposeUrl } from "../../data/profile";
+import { applyTheme, getInitialTheme, saveTheme } from "../../lib/theme";
 
 const navItems = [
   { label: "About", section: "about", page: "/about" },
@@ -11,22 +12,6 @@ const navItems = [
   { label: "Journey", section: "journey" },
   { label: "Contact", section: "contact" },
 ];
-
-function getInitialTheme() {
-  try {
-    const savedTheme = localStorage.getItem("theme");
-
-    if (savedTheme === "light" || savedTheme === "dark") {
-      return savedTheme;
-    }
-  } catch {
-    // Continue with the system preference if storage is unavailable.
-  }
-
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-}
 
 function Navbar() {
   const { pathname } = useLocation();
@@ -38,21 +23,15 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState(getInitialTheme);
 
-  // Apply the selected theme and persist the preference.
+  // Apply the current theme. Only a manual toggle is saved.
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-
-    try {
-      localStorage.setItem("theme", theme);
-    } catch {
-      // The theme still works for the current session.
-    }
+    applyTheme(theme);
   }, [theme]);
 
   function toggleTheme() {
-    setTheme((currentTheme) =>
-      currentTheme === "dark" ? "light" : "dark"
-    );
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    saveTheme(nextTheme);
   }
 
   function closeMenu() {

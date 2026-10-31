@@ -11,6 +11,9 @@ function App() {
   return (
     <>
       <ScrollToTop />
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
 
       <Routes>
         <Route path="/" element={<Home />} />

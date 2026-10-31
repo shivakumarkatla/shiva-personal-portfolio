@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="theme-color" content="#111318" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#0A0B10" />
+    <meta name="color-scheme" content="dark light" />
     <meta name="author" content="Shiva Kumar" />
 
     <meta
@@ -48,19 +48,29 @@
 
     <title>Shiva Kumar — Software Developer</title>
 
-    <!-- Apply the theme before first paint to avoid a flash of the wrong theme. -->
+    <link
+      rel="preload"
+      href="/fonts/inter-latin-var.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!--
+      Apply the theme before first paint. Dark on first visit; a saved manual
+      choice ("light" or "dark") always wins. The OS setting is not used.
+      Keep in sync with getInitialTheme() in src/components/layout/Navbar.jsx.
+    -->
     <script>
       (function () {
-        var theme;
+        var theme = "dark";
         try {
-          theme = localStorage.getItem("theme");
+          var saved = localStorage.getItem("theme");
+          if (saved === "light" || saved === "dark") theme = saved;
         } catch (error) {}
-        if (theme !== "light" && theme !== "dark") {
-          theme = window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light";
-        }
         document.documentElement.setAttribute("data-theme", theme);
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", theme === "light" ? "#F7F8FA" : "#0A0B10");
       })();
     </script>
   </head>
