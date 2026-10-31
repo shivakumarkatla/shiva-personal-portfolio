@@ -1,5 +1,11 @@
 /* Base element styles shared by every page. */
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;

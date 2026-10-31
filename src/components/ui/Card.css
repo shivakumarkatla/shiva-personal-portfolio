@@ -1,0 +1,61 @@
+.ui-card {
+  position: relative;
+  padding: var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-1);
+  box-shadow: var(--highlight);
+}
+
+.ui-card--interactive {
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.ui-card--interactive::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    360px circle at var(--pointer-x, 50%) var(--pointer-y, 0%),
+    var(--glow-accent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
+  pointer-events: none;
+}
+
+.ui-card--interactive:hover,
+.ui-card--interactive:focus-within {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ui-card--interactive:hover::before {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .ui-card {
+    padding: var(--space-6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-card--interactive,
+  .ui-card--interactive::before {
+    transition: none;
+  }
+
+  .ui-card--interactive:hover,
+  .ui-card--interactive:focus-within {
+    transform: none;
+  }
+}

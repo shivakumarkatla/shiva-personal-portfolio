@@ -1,0 +1,25 @@
+.ui-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.ui-tag--accent {
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  color: var(--accent);
+}
+
+/* Automation-related labels only. */
+.ui-tag--signal {
+  border-color: color-mix(in srgb, var(--signal) 35%, transparent);
+  color: var(--signal);
+}

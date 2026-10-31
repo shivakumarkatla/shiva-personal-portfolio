@@ -7,7 +7,7 @@ import {
   Linkedin,
 } from "lucide-react";
 import { motion } from "motion/react";
-import Button from "../ui/Button";
+import { Link } from "react-router-dom";
 import { profile } from "../../data/profile";
 
 const technologies = [
@@ -67,19 +67,19 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.26 }}
           >
-            <Button href="#projects">
+            <a className="button button--primary" href="#projects">
               View Projects
               <ArrowUpRight size={17} aria-hidden="true" />
-            </Button>
+            </a>
 
-            <Button to="/about" variant="secondary">
+            <Link className="button button--secondary" to="/about">
               About Me
               <ArrowUpRight size={17} aria-hidden="true" />
-            </Button>
+            </Link>
 
-            <Button href="#contact" variant="secondary">
+            <a className="button button--secondary" href="#contact">
               Let&apos;s Connect
-            </Button>
+            </a>
           </motion.div>
 
           <motion.div

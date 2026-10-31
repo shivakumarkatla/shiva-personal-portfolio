@@ -1,20 +1,55 @@
 import { Link } from "react-router-dom";
+import "./Button.css";
 
-function Button({ children, href, to, variant = "primary", ...props }) {
-  const className = `button button--${variant}`;
+/**
+ * Button or link styled as a button.
+ * - `to`: internal route (React Router Link)
+ * - `href`: plain link; set `external` to open in a new tab
+ * - neither: <button type="button">
+ */
+function Button({
+  children,
+  to,
+  href,
+  external = false,
+  variant = "primary",
+  size = "md",
+  className = "",
+  ...props
+}) {
+  const classes = [
+    "ui-button",
+    `ui-button--${variant}`,
+    `ui-button--${size}`,
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   if (to) {
     return (
-      <Link className={className} to={to} {...props}>
+      <Link className={classes} to={to} {...props}>
         {children}
       </Link>
     );
   }
 
+  if (href) {
+    const externalProps = external
+      ? { target: "_blank", rel: "noopener noreferrer" }
+      : {};
+
+    return (
+      <a className={classes} href={href} {...externalProps} {...props}>
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <a className={className} href={href} {...props}>
+    <button type="button" className={classes} {...props}>
       {children}
-    </a>
+    </button>
   );
 }
 
