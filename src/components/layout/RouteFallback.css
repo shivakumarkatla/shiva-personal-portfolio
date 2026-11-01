@@ -1,0 +1,76 @@
+.route-fallback {
+  display: grid;
+  place-items: center;
+  min-height: 60vh;
+  padding: var(--space-8) var(--gutter);
+}
+
+.route-fallback__loader {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--muted);
+  font-size: var(--text-sm);
+  /* Only appear if loading takes noticeably long. */
+  animation: route-fallback-appear 0.2s ease-out 0.3s both;
+}
+
+.route-fallback__spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border-strong);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: route-fallback-spin 0.8s linear infinite;
+}
+
+.route-fallback__error {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  max-width: 480px;
+  text-align: center;
+}
+
+.route-fallback__error h1 {
+  margin: 0;
+  font-size: var(--text-2xl);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.route-fallback__error p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.route-fallback__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+@keyframes route-fallback-appear {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes route-fallback-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-fallback__loader {
+    animation: none;
+  }
+
+  .route-fallback__spinner {
+    animation: none;
+    border-top-color: var(--border-strong);
+  }
+}

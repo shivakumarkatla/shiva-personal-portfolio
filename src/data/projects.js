@@ -1,5 +1,4 @@
 import { architectureBySlug } from "./architecture";
-import { caseStudiesBySlug } from "./caseStudies";
 
 const projectSummaries = [
 {
@@ -254,10 +253,10 @@ liveDemoUrl: "",
   },
 ];
 
-// Each project carries its case study and architecture (or null) so pages read one source.
+// Each project carries its architecture outline (or null). Long-form case-study
+// text lives in caseStudies.js and is only loaded by the case-study page.
 export const projects = projectSummaries.map((project) => ({
   ...project,
-  caseStudy: caseStudiesBySlug[project.slug] ?? null,
   architecture: architectureBySlug[project.slug] ?? null,
 }));
 

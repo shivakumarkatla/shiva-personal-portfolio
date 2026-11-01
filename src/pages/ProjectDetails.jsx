@@ -10,12 +10,13 @@ import PageLayout from "../components/layout/PageLayout";
 import Button from "../components/ui/Button";
 import ContactCta from "../components/ui/ContactCta";
 import Container from "../components/ui/Container";
+import { caseStudiesBySlug } from "../data/caseStudies";
 import { getProjectBySlug } from "../data/projects";
 import "./ProjectDetails.css";
 
 // Sections are only shown when the case study has content for them.
-function buildSections(project) {
-  const { caseStudy, architecture } = project;
+function buildSections(project, caseStudy) {
+  const { architecture } = project;
   if (!caseStudy) return [];
 
   return [
@@ -144,9 +145,10 @@ function ProjectDetails() {
 
   if (!project) return <ProjectNotFound />;
 
-  const sections = buildSections(project);
+  const caseStudy = caseStudiesBySlug[project.slug] ?? null;
+  const sections = buildSections(project, caseStudy);
   const repositories = project.githubUrls ?? [];
-  const intro = project.caseStudy?.introduction ?? project.description;
+  const intro = caseStudy?.introduction ?? project.description;
 
   return (
     <PageLayout title={project.title} description={project.description}>

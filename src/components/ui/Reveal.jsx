@@ -1,11 +1,12 @@
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 
+// `m` components get their animation features from <LazyMotion> in App.jsx.
 const motionTags = {
-  div: motion.div,
-  section: motion.section,
-  article: motion.article,
-  header: motion.header,
-  li: motion.li,
+  div: m.div,
+  section: m.section,
+  article: m.article,
+  header: m.header,
+  li: m.li,
 };
 
 /**
@@ -33,7 +34,7 @@ function Reveal({
     );
   }
 
-  const MotionTag = motionTags[as] ?? motion.div;
+  const MotionTag = motionTags[as] ?? m.div;
 
   return (
     <MotionTag
