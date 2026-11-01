@@ -202,13 +202,14 @@ function Navbar() {
         <Link
           className="app-header__brand"
           to="/"
-          aria-label={`${profile.name}, home`}
           onClick={closeMenu}
         >
           <span className="app-header__mark" aria-hidden="true">
             SK
           </span>
+          {/* Accessible name starts with the visible text (WCAG 2.5.3). */}
           <span className="app-header__name">{profile.name}</span>
+          <span className="sr-only">, home</span>
         </Link>
 
         <nav className="app-header__nav" aria-label="Primary">

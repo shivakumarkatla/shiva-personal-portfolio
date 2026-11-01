@@ -11,7 +11,8 @@
  *   1280px desktops
  *
  * Contrast (WCAG 2.x) on --bg: text 18.0, muted 7.6, accent 6.1, signal 10.9 (dark);
- * text 17.8, muted 5.9, accent 5.9, signal 4.9 on white (light).
+ * text 17.8, muted 5.9, accent 5.9 on --bg; signal 4.8+ on every light surface
+ * including --surface-2 (light).
  */
 
 :root,
@@ -56,12 +57,12 @@
   --accent-hover: #4338ca;
   --on-accent: #ffffff;
 
-  --signal: #0b7f73;
+  --signal: #0a776c;
 
   --error: #c2413b;
 
   --glow-accent: rgb(79 70 229 / 8%);
-  --glow-signal: rgb(11 127 115 / 8%);
+  --glow-signal: rgb(10 119 108 / 8%);
   --highlight: inset 0 1px 0 rgb(255 255 255 / 60%);
 }
 
