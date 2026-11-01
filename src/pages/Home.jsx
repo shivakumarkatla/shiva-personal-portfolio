@@ -12,7 +12,8 @@ function Home() {
   return (
     <div className="site-shell">
       <PageMetadata
-        title="Software Developer"
+        title="Software Developer & AI Automation Engineer"
+        isHome
         description="Shiva Kumar builds full-stack applications, AI agents and workflow automations. Open to software development roles and freelance AI automation projects."
       />
       <Navbar />
