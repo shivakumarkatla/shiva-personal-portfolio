@@ -9,6 +9,7 @@ import {
   History,
   Mail,
   MessageSquareText,
+  MoveHorizontal,
   Send,
 } from "lucide-react";
 import "./WorkflowDiagram.css";
@@ -74,7 +75,22 @@ function WorkflowDiagram({ showCaseStudyLink = true }) {
   const prefersReducedMotion = useReducedMotion();
   const figureRef = useRef(null);
   const svgRef = useRef(null);
+  const viewportRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isScrollable, setIsScrollable] = useState(false);
+
+  // A scrolling viewport must be reachable by keyboard; a static one must not.
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return undefined;
+
+    const observer = new ResizeObserver(() => {
+      setIsScrollable(viewport.scrollWidth > viewport.clientWidth + 1);
+    });
+
+    observer.observe(viewport);
+    return () => observer.disconnect();
+  }, []);
 
   // Only animate while the diagram is on screen.
   useEffect(() => {
@@ -121,117 +137,110 @@ function WorkflowDiagram({ showCaseStudyLink = true }) {
           result is sent back to the user on Telegram.
         </p>
 
-        {/* Wide layout: node canvas with connectors. */}
-        <div className="workflow__canvas" aria-hidden="true">
-          <svg
-            ref={svgRef}
-            className="workflow__lines"
-            viewBox={`0 0 ${VIEW_WIDTH} ${VIEW_HEIGHT}`}
-            focusable="false"
-          >
-            <path className="workflow__edge workflow__edge--main" d={MAIN_PATH} pathLength="1" />
-
-            {subNodes.map((node) => (
-              <path
-                key={node.id}
-                className={`workflow__edge workflow__edge--${node.port === "tool" ? "tool" : "support"}`}
-                d={connectorPath(node)}
-              />
-            ))}
-
-            {Object.entries({ model: "Model", memory: "Memory", tool: "Tools" }).map(
-              ([port, label]) => (
-                <text
-                  key={port}
-                  className="workflow__port-label"
-                  x={PORT_X[port] - 8}
-                  y={AGENT_BOTTOM + 26}
-                  textAnchor="end"
-                >
-                  {label}
-                </text>
-              ),
-            )}
-
-            {animate && (
-              <>
-                <circle className="workflow__pulse" r="4">
-                  <animateMotion dur="3.2s" repeatCount="indefinite" path={MAIN_PATH} />
-                </circle>
-                <circle className="workflow__pulse workflow__pulse--tool" r="3.5" visibility="hidden">
-                  {/* Stay hidden until the delayed motion starts, so the dot never sits at 0,0. */}
-                  <set attributeName="visibility" to="visible" begin="1.2s" />
-                  <animateMotion
-                    dur="2.4s"
-                    begin="1.2s"
-                    repeatCount="indefinite"
-                    path={connectorPath(subNodes[2])}
-                  />
-                </circle>
-                <circle className="workflow__pulse workflow__pulse--tool" r="3.5" visibility="hidden">
-                  {/* Stay hidden until the delayed motion starts, so the dot never sits at 0,0. */}
-                  <set attributeName="visibility" to="visible" begin="2.4s" />
-                  <animateMotion
-                    dur="2.4s"
-                    begin="2.4s"
-                    repeatCount="indefinite"
-                    path={connectorPath(subNodes[3])}
-                  />
-                </circle>
-              </>
-            )}
-          </svg>
-
-          {mainNodes.map((node, index) => (
-            <Node
-              key={node.id}
-              node={node}
-              className={`workflow-node--main ${node.primary ? "workflow-node--primary" : ""}`}
-              style={{
-                left: percent(node.x, VIEW_WIDTH),
-                top: percent(node.y, VIEW_HEIGHT),
-                width: percent(node.w, VIEW_WIDTH),
-                "--i": index,
-              }}
-            />
-          ))}
-
-          {subNodes.map((node, index) => (
-            <Node
-              key={node.id}
-              node={node}
-              className={`workflow-node--sub ${node.port === "tool" ? "workflow-node--tool" : ""}`}
-              style={{
-                left: percent(node.x, VIEW_WIDTH),
-                top: percent(node.y, VIEW_HEIGHT),
-                "--i": index + 3,
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Narrow layout: the same workflow as a vertical flow. */}
-        <ol className="workflow__stack" aria-hidden="true">
-          <li>
-            <Node node={mainNodes[0]} className="workflow-node--main" />
-          </li>
-          <li className="workflow__stack-agent">
-            <Node node={mainNodes[1]} className="workflow-node--main workflow-node--primary" />
-            <div className="workflow__stack-uses">
+        {/* Node canvas with connectors. Scrolls sideways on narrow screens. */}
+        <div
+          ref={viewportRef}
+          className="workflow__viewport"
+          {...(isScrollable && {
+            tabIndex: 0,
+            role: "region",
+            "aria-label": "Smart Schedule workflow diagram, scrolls horizontally",
+          })}
+        >
+          <div className="workflow__canvas" aria-hidden="true">
+            <svg
+              ref={svgRef}
+              className="workflow__lines"
+              viewBox={`0 0 ${VIEW_WIDTH} ${VIEW_HEIGHT}`}
+              focusable="false"
+            >
+              <path className="workflow__edge workflow__edge--main" d={MAIN_PATH} pathLength="1" />
+  
               {subNodes.map((node) => (
-                <Node
+                <path
                   key={node.id}
-                  node={node}
-                  className={`workflow-node--sub ${node.port === "tool" ? "workflow-node--tool" : ""}`}
+                  className={`workflow__edge workflow__edge--${node.port === "tool" ? "tool" : "support"}`}
+                  d={connectorPath(node)}
                 />
               ))}
-            </div>
-          </li>
-          <li>
-            <Node node={mainNodes[2]} className="workflow-node--main" />
-          </li>
-        </ol>
+  
+              {Object.entries({ model: "Model", memory: "Memory", tool: "Tools" }).map(
+                ([port, label]) => (
+                  <text
+                    key={port}
+                    className="workflow__port-label"
+                    x={PORT_X[port] - 8}
+                    y={AGENT_BOTTOM + 26}
+                    textAnchor="end"
+                  >
+                    {label}
+                  </text>
+                ),
+              )}
+  
+              {animate && (
+                <>
+                  <circle className="workflow__pulse" r="4">
+                    <animateMotion dur="3.2s" repeatCount="indefinite" path={MAIN_PATH} />
+                  </circle>
+                  <circle className="workflow__pulse workflow__pulse--tool" r="3.5" visibility="hidden">
+                    {/* Stay hidden until the delayed motion starts, so the dot never sits at 0,0. */}
+                    <set attributeName="visibility" to="visible" begin="1.2s" />
+                    <animateMotion
+                      dur="2.4s"
+                      begin="1.2s"
+                      repeatCount="indefinite"
+                      path={connectorPath(subNodes[2])}
+                    />
+                  </circle>
+                  <circle className="workflow__pulse workflow__pulse--tool" r="3.5" visibility="hidden">
+                    {/* Stay hidden until the delayed motion starts, so the dot never sits at 0,0. */}
+                    <set attributeName="visibility" to="visible" begin="2.4s" />
+                    <animateMotion
+                      dur="2.4s"
+                      begin="2.4s"
+                      repeatCount="indefinite"
+                      path={connectorPath(subNodes[3])}
+                    />
+                  </circle>
+                </>
+              )}
+            </svg>
+  
+            {mainNodes.map((node, index) => (
+              <Node
+                key={node.id}
+                node={node}
+                className={`workflow-node--main ${node.primary ? "workflow-node--primary" : ""}`}
+                style={{
+                  left: percent(node.x, VIEW_WIDTH),
+                  top: percent(node.y, VIEW_HEIGHT),
+                  width: percent(node.w, VIEW_WIDTH),
+                  "--i": index,
+                }}
+              />
+            ))}
+  
+            {subNodes.map((node, index) => (
+              <Node
+                key={node.id}
+                node={node}
+                className={`workflow-node--sub ${node.port === "tool" ? "workflow-node--tool" : ""}`}
+                style={{
+                  left: percent(node.x, VIEW_WIDTH),
+                  top: percent(node.y, VIEW_HEIGHT),
+                  "--i": index + 3,
+                }}
+              />
+            ))}
+          </div>
+        </div>
       </div>
+
+      <p className="workflow__hint" aria-hidden="true">
+        Swipe to see the whole workflow
+        <MoveHorizontal size={14} />
+      </p>
 
       <figcaption id="workflow-caption" className="workflow__caption">
         <span>

@@ -187,104 +187,43 @@
   font-size: clamp(10px, 1.45cqi, 15px);
 }
 
-/* ---------- Narrow stack ---------- */
+/* ---------- Narrow screens: same canvas, scrolled sideways ---------- */
 
-.workflow__stack {
+.workflow__hint {
   display: none;
-  position: relative;
-  margin: 0;
-  padding: var(--space-4);
-  list-style: none;
-}
-
-.workflow__stack > li {
-  position: relative;
-  display: grid;
-}
-
-.workflow__stack > li + li {
-  margin-top: var(--space-4);
-}
-
-/* Vertical connector between main steps, on one centred spine. */
-.workflow__stack > li + li::before {
-  content: "";
-  position: absolute;
-  top: calc(-1 * var(--space-4));
-  left: calc(50% - 1px);
-  height: var(--space-4);
-  border-left: 2px solid color-mix(in srgb, var(--accent) 70%, transparent);
-}
-
-.workflow__stack .workflow-node {
-  font-size: 14px;
-}
-
-/* The agent and the sub-nodes it uses form one cluster on the spine. */
-.workflow__stack-agent {
-  padding: var(--space-2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--surface-2) 35%, transparent);
-}
-
-.workflow__stack-uses {
-  --uses-gap: var(--space-2);
-  --uses-link: 1px dashed color-mix(in srgb, var(--signal) 60%, transparent);
-
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-rows: 1fr;
-  gap: var(--uses-gap);
-  padding-top: var(--space-4);
-}
-
-/* Dashed bracket from the agent down to both columns. */
-.workflow__stack-uses::before,
-.workflow__stack-uses::after {
-  content: "";
-  position: absolute;
-}
-
-.workflow__stack-uses::before {
-  top: 0;
-  left: 50%;
-  height: var(--space-2);
-  border-left: var(--uses-link);
-}
-
-.workflow__stack-uses::after {
-  top: var(--space-2);
-  left: calc((100% - var(--uses-gap)) / 4);
-  right: calc((100% - var(--uses-gap)) / 4);
-  height: var(--space-2);
-  border: var(--uses-link);
-  border-bottom: 0;
-  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-}
-
-.workflow__stack-uses .workflow-node {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5em;
-  padding-inline: 0.7em;
-  font-size: 13px;
 }
 
 @container (max-width: 640px) {
+  .workflow__viewport {
+    position: relative;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+
+  /* Inset ring: the panel clips anything outside it. */
+  .workflow__viewport:focus-visible {
+    outline-offset: -3px;
+    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  }
+
+  /* Fixed width keeps the desktop proportions and readable text;
+     node sizes now scale with the canvas instead of the screen. */
   .workflow__canvas {
-    display: none;
+    width: 880px;
+    container-type: inline-size;
   }
 
-  .workflow__stack {
-    display: block;
-  }
-}
-
-@container (max-width: 300px) {
-  .workflow__stack-uses {
-    grid-template-columns: 1fr;
+  .workflow__hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    margin: var(--space-3) 0 0;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
   }
 }
 
