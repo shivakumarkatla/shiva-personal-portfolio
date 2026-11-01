@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { domAnimation, LazyMotion } from "motion/react";
 import Home from "./pages/Home";
 import RouteErrorBoundary from "./components/layout/RouteErrorBoundary";
@@ -11,6 +11,7 @@ const AboutPage = lazy(routeLoaders.about);
 const SkillsPage = lazy(routeLoaders.skills);
 const ProjectsPage = lazy(routeLoaders.projects);
 const ProjectDetails = lazy(routeLoaders.project);
+const NotFoundPage = lazy(routeLoaders.notFound);
 
 // Start downloading a page's code as soon as the visitor shows intent to open it.
 function usePrefetchOnIntent() {
@@ -49,7 +50,7 @@ function App() {
             <Route path="/skills" element={<SkillsPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/projects/:slug" element={<ProjectDetails />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </RouteErrorBoundary>

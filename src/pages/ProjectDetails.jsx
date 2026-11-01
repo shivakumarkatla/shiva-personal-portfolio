@@ -117,7 +117,7 @@ function buildSections(project, caseStudy) {
 
 function ProjectNotFound() {
   return (
-    <PageLayout title="Project Not Found" description="The requested project could not be found.">
+    <PageLayout title="Project Not Found" description="The requested project could not be found." noindex>
       <PageHero
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "Projects", to: "/projects" }, { label: "Not found" }]}
         eyebrow="Project not found"

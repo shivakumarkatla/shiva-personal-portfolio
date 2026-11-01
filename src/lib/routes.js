@@ -6,6 +6,7 @@ export const routeLoaders = {
   skills: () => import("../pages/SkillsPage"),
   projects: () => import("../pages/ProjectsPage"),
   project: () => import("../pages/ProjectDetails"),
+  notFound: () => import("../pages/NotFoundPage"),
 };
 
 export function loaderForPath(pathname) {

@@ -1,1 +1,22 @@
-/*    /index.html   200
+# Netlify routing for this single-page app.
+# Existing files (assets, images, fonts, verification file) are served first.
+# Known pages return 200; any other path gets the app with a real 404 status,
+# so the not-found page renders and search engines see a 404.
+# Keep the project list in sync with src/data/projects.js.
+/                                             /index.html  200
+/about                                        /index.html  200
+/skills                                       /index.html  200
+/projects                                     /index.html  200
+/projects/full-stack-expense-tracker          /index.html  200
+/projects/full-stack-task-manager             /index.html  200
+/projects/ngo-audit-verification              /index.html  200
+/projects/smart-schedule                      /index.html  200
+/projects/restaurant-reservation-voice-agent  /index.html  200
+/projects/excel-lms                           /index.html  200
+/projects/llm-learning-system                 /index.html  200
+/projects/power-bi-analytics-dashboard        /index.html  200
+/projects/e-commerce-dashboard                /index.html  200
+/projects/youtube-scraper                     /index.html  200
+/projects/slack-private-bot-channel           /index.html  200
+/projects/airtable-make-slack                 /index.html  200
+/*                                            /index.html  404
