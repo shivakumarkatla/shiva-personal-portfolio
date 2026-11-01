@@ -1,0 +1,75 @@
+.about-portrait {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 420px;
+  margin: 0;
+}
+
+.about-portrait__frame {
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-xl);
+  background: var(--surface-2);
+  box-shadow: var(--highlight), 0 30px 60px -40px rgb(0 0 0 / 60%);
+}
+
+.about-portrait__frame picture,
+.about-portrait__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.about-portrait__image {
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.about-portrait__caption {
+  display: grid;
+  gap: var(--space-3);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.about-portrait__caption ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-sans);
+}
+
+@media (min-width: 1024px) {
+  .about-portrait {
+    justify-self: end;
+  }
+}
+
+/* Below desktop: a compact row (photo + caption) shown before the intro text. */
+@media (max-width: 1023px) {
+  .page-hero__aside:has(.about-portrait) {
+    order: -1;
+  }
+
+  .about-portrait {
+    grid-template-columns: 112px minmax(0, 1fr);
+    align-items: center;
+    max-width: none;
+  }
+
+  .about-portrait__frame {
+    aspect-ratio: 1;
+    border-radius: var(--radius-lg);
+  }
+}
+
+@media (max-width: 359px) {
+  .about-portrait {
+    grid-template-columns: 88px minmax(0, 1fr);
+  }
+}

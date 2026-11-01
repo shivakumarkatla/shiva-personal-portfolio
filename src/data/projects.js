@@ -1,5 +1,6 @@
+import { architectureBySlug } from "./architecture";
 
-export const projects = [
+const projectSummaries = [
 {
   number: "01",
   title: "Full-Stack Expense Tracker",
@@ -10,6 +11,9 @@ export const projects = [
     "A full-stack expense management application with authentication, CRUD operations, filtering, search, pagination, and dashboard analytics.",
   technologies: [
     "React",
+    "Tailwind CSS",
+    "Recharts",
+    "Axios",
     "Node.js",
     "Express",
     "MongoDB",
@@ -27,6 +31,10 @@ export const projects = [
   ],
   liveDemoUrl:
     "https://expense-tracker-frontend-rho-lake.vercel.app",
+  cover: {
+    src: "/images/projects/expense-tracker/dashboard.png",
+    alt: "Expense Tracker dashboard showing spending totals, a monthly spending trend chart and a breakdown by category",
+  },
   featured: true,
 },
 {
@@ -39,6 +47,8 @@ export const projects = [
     "A full-stack task management application with protected user data, task CRUD, filtering, search, sorting, and pagination.",
   technologies: [
     "React",
+    "Tailwind CSS",
+    "Axios",
     "Node.js",
     "Express",
     "MongoDB",
@@ -56,6 +66,10 @@ export const projects = [
   ],
   liveDemoUrl:
     "https://task-manager-frontend-rouge-omega.vercel.app",
+  cover: {
+    src: "/images/projects/task-manager/dashboard-tasks.png",
+    alt: "Task Manager dashboard listing tasks with status filters, status badges and edit and delete actions",
+  },
   featured: true,
 },
   {
@@ -79,11 +93,16 @@ export const projects = [
   },
 ],
 liveDemoUrl: "",
+    cover: {
+      src: "/images/projects/ngo-audit/field-audit-workflow.png",
+      variant: "cover",
+      alt: "n8n FieldAudit workflow: a Telegram trigger, a Switch that routes missing captions or photos to alerts, Gemini image analysis, JavaScript processing, a Google Sheets row append and Telegram notifications",
+    },
     featured: true,
   },
   {
     number: "04",
-    title: "Smart Schedule",
+    title: "Smart Schedule AI Agent",
     slug: "smart-schedule",
     status: "Completed",
     category: "AI & Automation",
@@ -91,7 +110,7 @@ liveDemoUrl: "",
       "An AI-assisted scheduling workflow connecting conversational input with calendar and productivity actions.",
     technologies: [
       "n8n",
-      "AI",
+      "OpenAI",
       "Telegram",
       "Google Calendar",
       "Gmail",
@@ -103,6 +122,11 @@ liveDemoUrl: "",
   },
 ],
 liveDemoUrl: "",
+    cover: {
+      src: "/images/projects/smart-schedule/smart-schedule-workflow.png",
+      variant: "cover",
+      alt: "n8n Smart Schedule workflow: a Telegram trigger feeding an AI Agent that uses an OpenAI chat model, simple memory, a Google Calendar create-event tool and a Gmail send tool, then replies in Telegram",
+    },
     featured: true,
   },
   {
@@ -190,6 +214,7 @@ liveDemoUrl: "",
     description:
       "A V1 automation for collecting and processing YouTube information as part of an automated workflow.",
     technologies: [
+      "Python",
       "Automation",
       "APIs",
       "Data",
@@ -227,3 +252,37 @@ liveDemoUrl: "",
     featured: false,
   },
 ];
+
+// Each project carries its architecture outline (or null). Long-form case-study
+// text lives in caseStudies.js and is only loaded by the case-study page.
+export const projects = projectSummaries.map((project) => ({
+  ...project,
+  architecture: architectureBySlug[project.slug] ?? null,
+}));
+
+// Filter groups for the projects archive. Each project keeps its own category label.
+export const categoryGroups = [
+  {
+    id: "full-stack",
+    label: "Full-stack & Web",
+    categories: ["Full Stack", "Web Development"],
+  },
+  {
+    id: "automation",
+    label: "AI & Automation",
+    categories: ["AI & Automation", "Voice AI", "Automation", "AI & Learning"],
+  },
+  {
+    id: "data",
+    label: "Data & Analytics",
+    categories: ["Data & Analytics", "Data & Learning"],
+  },
+];
+
+export function getCategoryGroup(category) {
+  return categoryGroups.find((group) => group.categories.includes(category));
+}
+
+export function getProjectBySlug(slug) {
+  return projects.find((project) => project.slug === slug);
+}

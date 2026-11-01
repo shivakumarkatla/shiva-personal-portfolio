@@ -1,0 +1,300 @@
+.workflow {
+  margin: 0;
+  container-type: inline-size;
+}
+
+.workflow__panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(60% 70% at 50% 30%, var(--glow-accent), transparent 70%),
+    radial-gradient(40% 50% at 70% 90%, var(--glow-signal), transparent 70%),
+    var(--surface-1);
+  box-shadow:
+    var(--highlight),
+    0 30px 80px -40px rgb(0 0 0 / 60%);
+}
+
+/* Faint dot grid, like a workflow canvas. */
+.workflow__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--text) 10%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+  mask-image: radial-gradient(80% 80% at 50% 50%, #000 40%, transparent 100%);
+  pointer-events: none;
+}
+
+.workflow__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  border-bottom: 1px solid var(--border);
+  font-size: var(--text-xs);
+}
+
+.workflow__name {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.workflow__platform {
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+
+/* ---------- Wide canvas ---------- */
+
+.workflow__canvas {
+  position: relative;
+  aspect-ratio: 1000 / 410;
+}
+
+.workflow__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.workflow__edge {
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.workflow__edge--main {
+  stroke: color-mix(in srgb, var(--accent) 70%, transparent);
+  stroke-width: 2;
+}
+
+.workflow__edge--support {
+  stroke: color-mix(in srgb, var(--muted) 55%, transparent);
+  stroke-dasharray: 4 5;
+}
+
+.workflow__edge--tool {
+  stroke: color-mix(in srgb, var(--signal) 70%, transparent);
+  stroke-dasharray: 4 5;
+}
+
+.workflow__port-label {
+  fill: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.workflow__pulse {
+  fill: var(--accent);
+  filter: drop-shadow(0 0 6px var(--accent));
+}
+
+.workflow__pulse--tool {
+  fill: var(--signal);
+  filter: drop-shadow(0 0 6px var(--signal));
+}
+
+.workflow-node {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  padding: 0.75em 0.9em;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--surface-2) 92%, transparent);
+  box-shadow: var(--highlight), 0 10px 30px -18px rgb(0 0 0 / 70%);
+  color: var(--text);
+  text-align: left;
+}
+
+.workflow__canvas .workflow-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: clamp(9px, 1.32cqi, 14px);
+}
+
+.workflow__canvas .workflow-node--sub {
+  width: 17.5%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55em;
+}
+
+.workflow-node__icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 2.3em;
+  height: 2.3em;
+  border-radius: 0.6em;
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  color: var(--accent);
+}
+
+.workflow-node__icon svg {
+  width: 1.3em;
+  height: 1.3em;
+}
+
+.workflow-node--tool .workflow-node__icon {
+  background: color-mix(in srgb, var(--signal) 16%, transparent);
+  color: var(--signal);
+}
+
+.workflow-node--sub:not(.workflow-node--tool) .workflow-node__icon {
+  background: color-mix(in srgb, var(--muted) 16%, transparent);
+  color: var(--muted);
+}
+
+.workflow-node__text {
+  display: grid;
+  gap: 0.2em;
+  min-width: 0;
+}
+
+.workflow-node__title {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.workflow-node__detail {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+  line-height: 1.3;
+}
+
+.workflow-node--primary {
+  border-color: color-mix(in srgb, var(--accent) 60%, var(--border-strong));
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface-2));
+  box-shadow:
+    var(--highlight),
+    0 0 0 4px color-mix(in srgb, var(--accent) 10%, transparent),
+    0 18px 50px -20px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+
+.workflow__canvas .workflow-node--primary {
+  padding: 1em 1.1em;
+  font-size: clamp(10px, 1.45cqi, 15px);
+}
+
+/* ---------- Narrow screens: same canvas, scrolled sideways ---------- */
+
+.workflow__hint {
+  display: none;
+}
+
+@container (max-width: 640px) {
+  .workflow__viewport {
+    position: relative;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+
+  /* Inset ring: the panel clips anything outside it. */
+  .workflow__viewport:focus-visible {
+    outline-offset: -3px;
+    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  }
+
+  /* Fixed width keeps the desktop proportions and readable text;
+     node sizes now scale with the canvas instead of the screen. */
+  .workflow__canvas {
+    width: 880px;
+    container-type: inline-size;
+  }
+
+  .workflow__hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    margin: var(--space-3) 0 0;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+}
+
+/* ---------- Caption ---------- */
+
+.workflow__caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2) var(--space-4);
+  margin-top: var(--space-4);
+  color: var(--muted);
+  font-size: var(--text-xs);
+  text-align: center;
+}
+
+.workflow__caption-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 44px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.workflow__caption-link:hover {
+  color: var(--accent-hover);
+}
+
+/* ---------- Entrance animation (skipped with reduced motion) ---------- */
+
+.workflow--animated .workflow__edge--main {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: workflow-draw 900ms var(--ease-out) 300ms forwards;
+}
+
+.workflow--animated .workflow__edge--support,
+.workflow--animated .workflow__edge--tool,
+.workflow--animated .workflow__port-label {
+  opacity: 0;
+  animation: workflow-fade 500ms var(--ease-out) 900ms forwards;
+}
+
+.workflow--animated .workflow__canvas .workflow-node {
+  opacity: 0;
+  animation: workflow-node-in 500ms var(--ease-out) forwards;
+  animation-delay: calc(150ms + var(--i, 0) * 90ms);
+}
+
+@keyframes workflow-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes workflow-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes workflow-node-in {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}

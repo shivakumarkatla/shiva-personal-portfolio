@@ -4,49 +4,61 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="theme-color" content="#111318" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#0A0B10" />
+    <meta name="color-scheme" content="dark light" />
     <meta name="author" content="Shiva Kumar" />
 
-    <meta
-      name="description"
-      content="Shiva Kumar is a software developer building full-stack applications, AI-powered workflows, and automation systems."
-    />
-
+    <meta name="description" content="Shiva Kumar builds full-stack applications, AI agents and workflow automations. Open to software development roles and freelance AI automation projects." />
     <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://shivas-personal-portfolio.netlify.app/" />
 
-    <link
-      rel="canonical"
-      href="https://shivas-personal-portfolio.netlify.app/"
-    />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Shiva Kumar — Portfolio" />
-    <meta
-      property="og:title"
-      content="Shiva Kumar — Software Developer"
-    />
-    <meta
-      property="og:description"
-      content="Explore Shiva Kumar's projects in full-stack development, AI automation, and data analytics."
-    />
-    <meta
-      property="og:url"
-      content="https://shivas-personal-portfolio.netlify.app/"
-    />
+    <meta property="og:title" content="Shiva Kumar — Software Developer &amp; AI Automation Engineer" />
+    <meta property="og:description" content="Shiva Kumar builds full-stack applications, AI agents and workflow automations. Open to software development roles and freelance AI automation projects." />
+    <meta property="og:url" content="https://shivas-personal-portfolio.netlify.app/" />
     <meta property="og:locale" content="en_IN" />
+    <meta property="og:image" content="https://shivas-personal-portfolio.netlify.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Shiva Kumar&#39;s portfolio homepage: I build software and AI-powered automations that solve real business problems." />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Shiva Kumar — Software Developer"
-    />
-    <meta
-      name="twitter:description"
-      content="Full-stack development, AI-powered workflows, and practical automation projects."
+    <meta name="twitter:title" content="Shiva Kumar — Software Developer &amp; AI Automation Engineer" />
+    <meta name="twitter:description" content="Shiva Kumar builds full-stack applications, AI agents and workflow automations. Open to software development roles and freelance AI automation projects." />
+    <meta name="twitter:image" content="https://shivas-personal-portfolio.netlify.app/og-image.png" />
+
+    <title>Shiva Kumar — Software Developer &amp; AI Automation Engineer</title>
+
+    <link
+      rel="preload"
+      href="/fonts/inter-latin-var.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
 
-    <title>Shiva Kumar — Software Developer</title>
+    <!--
+      Apply the theme before first paint. Dark on first visit; a saved manual
+      choice ("light" or "dark") always wins. The OS setting is not used.
+      Keep in sync with getInitialTheme() in src/components/layout/Navbar.jsx.
+    -->
+    <script>
+      (function () {
+        var theme = "dark";
+        try {
+          var saved = localStorage.getItem("theme");
+          if (saved === "light" || saved === "dark") theme = saved;
+        } catch (error) {}
+        document.documentElement.setAttribute("data-theme", theme);
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", theme === "light" ? "#F7F8FA" : "#0A0B10");
+      })();
+    </script>
   </head>
 
   <body>

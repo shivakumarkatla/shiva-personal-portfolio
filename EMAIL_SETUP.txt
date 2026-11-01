@@ -1,10 +1,21 @@
 EMAIL SETUP
 
-Open: src/components/sections/Contact.jsx
+The contact email lives in one place: src/data/profile.js
 
-Replace:
-  const CONTACT_EMAIL = "katlashivakumar2003@gmail.com";
+  const email = "katlashivakumar2003@gmail.com";
+  const emailSubject = "Portfolio enquiry";
 
-with your actual portfolio email address.
+Every email link is built from these values:
+- mailtoUrl: "Email me" buttons (homepage contact section, page-end
+  contact panels) and the footer email icon. Opens the visitor's default
+  email app with the subject prefilled.
+- emailComposeUrl: the "write in Gmail instead" fallback link, which opens
+  Gmail's web compose window in a new tab with recipient and subject filled.
+- The Copy button (src/components/ui/CopyEmail.jsx) copies the address
+  and announces "Email address copied" (or a failure message).
 
-The CTA will then open the visitor's default email client using mailto:.
+Note: a mailto: link does not send email. It hands the address to the
+email app configured on the visitor's device. If no app is configured (or
+the configured app is broken, e.g. the retired Windows Mail app), nothing
+opens. That is why the Gmail and copy options are shown next to the button.
+No contact form or third-party service is used.

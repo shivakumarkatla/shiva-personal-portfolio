@@ -1,0 +1,92 @@
+.ui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.ui-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.ui-button svg {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+/* Sizes: both meet the 44px minimum touch target. */
+.ui-button--md {
+  min-height: 48px;
+  padding: 0 var(--space-5);
+  font-size: var(--text-sm);
+}
+
+.ui-button--sm {
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  font-size: var(--text-sm);
+}
+
+/* Variants */
+.ui-button--primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.ui-button--primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.ui-button--ghost {
+  border-color: var(--border-strong);
+  background: transparent;
+  color: var(--text);
+}
+
+.ui-button--ghost:hover {
+  border-color: var(--accent);
+  background: var(--surface-1);
+  transform: translateY(-1px);
+}
+
+.ui-button--link {
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+}
+
+.ui-button--link:hover {
+  color: var(--accent-hover);
+}
+
+.ui-button:hover svg:last-child {
+  transform: translate(2px, -2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-button,
+  .ui-button svg {
+    transition: none;
+  }
+
+  .ui-button:hover,
+  .ui-button:hover svg:last-child {
+    transform: none;
+  }
+}
