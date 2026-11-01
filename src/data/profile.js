@@ -4,7 +4,6 @@ const email = "katlashivakumar2003@gmail.com";
 
 export const profile = {
   name: "Shiva Kumar",
-  brand: "SHIVA",
   roles: ["Software Developer", "AI Automation Engineer"],
   email,
   siteUrl: "https://shivas-personal-portfolio.netlify.app",

@@ -1,7 +1,7 @@
 // Theme handling. Dark is the default; only a manual toggle is saved.
 // Keep the defaults in sync with the inline script in index.html.
 
-export const DEFAULT_THEME = "dark";
+const DEFAULT_THEME = "dark";
 const STORAGE_KEY = "theme";
 
 const THEME_COLORS = {
