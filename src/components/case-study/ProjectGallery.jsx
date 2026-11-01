@@ -69,7 +69,6 @@ function ProjectGallery({ screenshots, projectTitle }) {
           src={current.src}
           alt={current.alt}
           sizes="(min-width: 1280px) 860px, (min-width: 1024px) 66vw, 92vw"
-          loading={index === 0 ? "eager" : "lazy"}
         />
 
         {total > 1 && (

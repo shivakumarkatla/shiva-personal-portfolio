@@ -11,7 +11,7 @@ function AboutPortrait() {
           className="about-portrait__image"
           src="/images/profile-photo.png"
           alt={`Portrait of ${profile.name}`}
-          sizes="(min-width: 1024px) 400px, 90vw"
+          sizes="(min-width: 1024px) 400px, 112px"
           loading="eager"
           fetchPriority="high"
         />

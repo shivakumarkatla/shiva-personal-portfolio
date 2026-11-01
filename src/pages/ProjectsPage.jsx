@@ -79,8 +79,14 @@ function ProjectsPage() {
                 Featured work <span>{featured.length}</span>
               </h3>
               <div className="projects-archive__featured">
-                {featured.map((project) => (
-                  <ProjectCard key={project.slug} project={project} headingLevel="h4" />
+                {featured.map((project, index) => (
+                  <ProjectCard
+                    key={project.slug}
+                    project={project}
+                    headingLevel="h4"
+                    // The first row is visible on load; the rest can wait.
+                    imageLoading={index < 2 ? "eager" : "lazy"}
+                  />
                 ))}
               </div>
             </div>

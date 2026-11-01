@@ -17,6 +17,7 @@ function ProjectCard({
   variant = "default",
   headingLevel: Heading = "h3",
   imageSizes,
+  imageLoading = "lazy",
 }) {
   const { slug, title, category, status, description, technologies, cover } =
     project;
@@ -33,6 +34,7 @@ function ProjectCard({
             src={cover.src}
             variant={cover.variant}
             alt={cover.alt}
+            loading={imageLoading}
             sizes={
               imageSizes ?? "(min-width: 1280px) 560px, (min-width: 768px) 45vw, 92vw"
             }
