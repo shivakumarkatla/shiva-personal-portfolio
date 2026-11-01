@@ -29,6 +29,11 @@
   color: var(--muted);
 }
 
+.contact-cta__side {
+  display: grid;
+  gap: var(--space-3);
+}
+
 .contact-cta__actions {
   display: flex;
   flex-wrap: wrap;

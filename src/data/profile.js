@@ -18,7 +18,15 @@ export const profile = {
   },
 };
 
-export const mailtoUrl = `mailto:${email}`;
+const emailSubject = "Portfolio enquiry";
 
-// Gmail web compose link used by the current contact buttons.
-export const emailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}`;
+// Opens the visitor's default email app (if one is configured).
+export const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(emailSubject)}`;
+
+// Fallback for visitors without a working email app: Gmail's web compose.
+export const emailComposeUrl = `https://mail.google.com/mail/?${new URLSearchParams({
+  view: "cm",
+  fs: "1",
+  to: email,
+  su: emailSubject,
+})}`;

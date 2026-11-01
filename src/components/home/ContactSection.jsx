@@ -1,6 +1,7 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import Button from "../ui/Button";
 import CopyEmail from "../ui/CopyEmail";
+import EmailHelp from "../ui/EmailHelp";
 import Reveal from "../ui/Reveal";
 import Section from "../ui/Section";
 import StatusPill from "../ui/StatusPill";
@@ -37,6 +38,7 @@ function ContactSection() {
             <Mail size={18} aria-hidden="true" />
             Email me
           </Button>
+          <EmailHelp mentionCopy />
 
           <CopyEmail email={profile.email} />
 
